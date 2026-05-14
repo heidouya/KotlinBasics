@@ -2,7 +2,7 @@ package com.example.kotlinbasics
 /*
 类型推断：Kotlin 编译器会根据变量的初始值自动推断出变量的类型，开发者不需要显式指定类型。
 */
-fun main2() {
+fun main() {
     var customers = 10
 
 //    customers = ""
