@@ -144,16 +144,21 @@ fun sum(x: Int, y: Int): Int {
 //     noReturnFunction()
 // }
 //-------------从函数返回一个拉姆达表达式-------------------
+// fun main() {
+//     val fn: () -> (text: String) -> String = {
+//         {text: String -> text.uppercase()}
+//     }
+//
+//     val upperCaseString = fn()
+//     println(upperCaseString("hello"))
+// }
+// fun fn(): (text: String) -> String {
+//     return {text: String -> text.uppercase()}
+// }
+//-------------拉姆达表达式自调用--------------------
 fun main() {
-    val fn: () -> (text: String) -> String = {
-        {text: String -> text.uppercase()}
-    }
-
-    val upperCaseString = fn()
-    println(upperCaseString("hello"))
-}
-fun fn(): (text: String) -> String {
-    return {text: String -> text.uppercase()}
+    val text = { text: String -> text.uppercase() }("hello")
+    println(text)
 }
 
 
