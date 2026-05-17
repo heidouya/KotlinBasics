@@ -73,34 +73,52 @@ fun sum(x: Int, y: Int): Int {
 //     return "未授权"
 // }
 //-------------拉姆达表达式-----------------
+// fun main() {
+//     println(uppercaseString("hello")) // HELLO
+//
+//     val upperCaseString = { text: String -> text.uppercase() }
+//     println(upperCaseString("hello"))
+//
+//     //------------多参拉姆达表达式-----------------
+//     val sum1 = { x: Int, y: Int -> x + y }
+//     println(sum1(1, 2))
+//
+//     //------------多参拉姆达表达式-----------------
+//     val sum2 = { x: Int, y: Int ->
+//         println(x)
+//         println(y)
+//         x + y
+//     }
+//
+//     println(sum2(1, 3))
+//
+//     //------------无参数拉姆达表达式-----------------
+//     val sayHello = { 1 + 5 }
+//     val res = sayHello()
+//     println(res)
+// }
+//
+// fun uppercaseString(text: String): String {
+//     return text.uppercase()
+// }
+//--------拉姆达表达式作为函数参数传递--------
 fun main() {
-    println(uppercaseString("hello")) // HELLO
+    val numbers = listOf(1, -2, 3, -4, 5, -6)
+    val positives1 = numbers.filter { x -> x > 0 }
+    val isPositives: (Int) -> Boolean = { x: Int -> x > 0 }
+    val positives2 = numbers.filter(isPositives)
+    println(positives1) // [1, 3, 5]
+    println(positives2) // [1, 3, 5]
 
-    val upperCaseString = { text: String -> text.uppercase() }
-    println(upperCaseString("hello"))
+    val isNegative = { x: Int -> x < 0 }
+    val negatives = numbers.filter(isNegative)
+    println(negatives) // [-2, -4, -6]
 
-    //------------多参拉姆达表达式-----------------
-    val sum1 = { x: Int, y: Int -> x + y }
-    println(sum1(1, 2))
+    val numbers2 = listOf(1, -2, 3, -4, 5, -6)
+    val doubled = numbers2.map { x -> x * 2 }
+    println(doubled) // [2, -4, 6, -8, 10, -12]
 
-    //------------多参拉姆达表达式-----------------
-    val sum2 = { x: Int, y: Int ->
-        println(x)
-        println(y)
-        x + y
-    }
-
-    println(sum2(1, 3))
-
-    //------------无参数拉姆达表达式-----------------
-    val sayHello = { 1 + 5 }
-    val res = sayHello()
-    println(res)
+    val isTripled = { x: Int -> x * 3 }
+    val tripled = numbers.map(isTripled)
+    println(tripled) // [3, -6, 9, -12, 15, -18]
 }
-
-fun uppercaseString(text: String): String {
-    return text.uppercase()
-}
-
-
-
