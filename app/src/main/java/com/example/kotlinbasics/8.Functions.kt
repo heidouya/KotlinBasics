@@ -62,15 +62,45 @@ fun sum(x: Int, y: Int): Int {
 // // 可以省略返回值类型
 // fun sum2(x: Int, y: Int) = x + y;
 //----------------函数提前返回------------------
+// fun main() {
+//     println(isAuth(true))
+// }
+//
+// fun isAuth(isAuth: Boolean): String {
+//     if (isAuth) {
+//         return "已经授权"
+//     }
+//     return "未授权"
+// }
+//-------------拉姆达表达式-----------------
 fun main() {
-    println(isAuth(true))
+    println(uppercaseString("hello")) // HELLO
+
+    val upperCaseString = { text: String -> text.uppercase() }
+    println(upperCaseString("hello"))
+
+    //------------多参拉姆达表达式-----------------
+    val sum1 = { x: Int, y: Int -> x + y }
+    println(sum1(1, 2))
+
+    //------------多参拉姆达表达式-----------------
+    val sum2 = { x: Int, y: Int ->
+        println(x)
+        println(y)
+        x + y
+    }
+
+    println(sum2(1, 3))
+
+    //------------无参数拉姆达表达式-----------------
+    val sayHello = { 1 + 5 }
+    val res = sayHello()
+    println(res)
 }
 
-fun isAuth(isAuth: Boolean): String {
-    if (isAuth) {
-        return "已经授权"
-    }
-    return "未授权"
+fun uppercaseString(text: String): String {
+    return text.uppercase()
 }
+
 
 
