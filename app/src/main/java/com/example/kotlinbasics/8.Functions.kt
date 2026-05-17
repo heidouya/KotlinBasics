@@ -259,7 +259,27 @@ let 函数是 Kotlin 中的一种作用域函数，它接受一个 lambda 表达
 // fun getNextAddress(): String {
 //     return "sebastian@jetbrains.com"
 // }
+//--------------------apply--------------------
+/*
+apply 函数是 Kotlin 中的一种作用域函数，它接受一个 lambda 表达式作为参数，并将调用该函数的对象作为参数传递给 lambda 表达式。apply 函数的返回值是调用该函数的对象。
+*/
+// val client = Client()
 
+val client = Client().apply {
+    token = "asdf"
+}
 
+fun main() {
+    client.token = "asdf"
+    client.getData()
+}
+
+class Client() {
+    var token: String? = null
+    fun getData() : String {
+        println("getting data!")
+        return "Mock data"
+    }
+}
 
 
