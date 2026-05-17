@@ -12,17 +12,32 @@ object 对象名 {
 }
 对象声明的成员可以是属性、方法、构造函数等。
 */
-fun main() {
-    println(Singleton.name)
-    Singleton.sayHello()
+// fun main() {
+//     println(Singleton.name)
+//     Singleton.sayHello()
+// }
+//
+// object Singleton {
+//     var name: String = "Singleton"
+//     fun sayHello() {
+//         println("Hello, $name")
+//     }
+// }
+//-------------------------对象继承-------------------
+/*
+对象声明可以继承其他类，并实现接口。
+对象声明的继承语法如下：
+object 对象名 : 父类名, 接口名 {
+    // 成员
 }
-
-object Singleton {
-    var name: String = "Singleton"
-    fun sayHello() {
-        println("Hello, $name")
+*/
+object MyObject : MyInterface {
+    override fun myMethod() {
+        println("MyObject myMethod")
     }
 }
-
+interface MyInterface {
+    fun myMethod()
+}
 
 
