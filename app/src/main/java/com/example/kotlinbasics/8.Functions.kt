@@ -102,23 +102,47 @@ fun sum(x: Int, y: Int): Int {
 //     return text.uppercase()
 // }
 //--------拉姆达表达式作为函数参数传递--------
+// fun main() {
+//     val numbers = listOf(1, -2, 3, -4, 5, -6)
+//     val positives1 = numbers.filter { x -> x > 0 }
+//     val isPositives: (Int) -> Boolean = { x: Int -> x > 0 }
+//     val positives2 = numbers.filter(isPositives)
+//     println(positives1) // [1, 3, 5]
+//     println(positives2) // [1, 3, 5]
+//
+//     val isNegative = { x: Int -> x < 0 }
+//     val negatives = numbers.filter(isNegative)
+//     println(negatives) // [-2, -4, -6]
+//
+//     val numbers2 = listOf(1, -2, 3, -4, 5, -6)
+//     val doubled = numbers2.map { x -> x * 2 }
+//     println(doubled) // [2, -4, 6, -8, 10, -12]
+//
+//     val isTripled = { x: Int -> x * 3 }
+//     val tripled = numbers.map(isTripled)
+//     println(tripled) // [3, -6, 9, -12, 15, -18]
+// }
+//----------------函数类型----------------
+/*
+函数类型是 Kotlin 中的一种数据类型，表示一个函数的类型，函数类型由参数类型和返回值类型组成，用箭头 -> 分隔。
+
+参数类型用括号括起来，多个参数类型用逗号分隔。返回值类型写在箭头 -> 的后面。
+例如：(String) -> String 表示一个函数类型，该函数接受一个 String 类型的参数并返回一个 String 类型的值。
+
+函数类型可以赋值给变量，也可以作为参数传递给函数，还可以作为函数的返回值。
+ */
 fun main() {
-    val numbers = listOf(1, -2, 3, -4, 5, -6)
-    val positives1 = numbers.filter { x -> x > 0 }
-    val isPositives: (Int) -> Boolean = { x: Int -> x > 0 }
-    val positives2 = numbers.filter(isPositives)
-    println(positives1) // [1, 3, 5]
-    println(positives2) // [1, 3, 5]
+   val upperCaseString: (String) -> String = { text -> text.uppercase() }
+   println(upperCaseString("hello")) // HELLO
 
-    val isNegative = { x: Int -> x < 0 }
-    val negatives = numbers.filter(isNegative)
-    println(negatives) // [-2, -4, -6]
+    // 无参数函数类型
+    val noArgFunction: () -> String = { "Hello, World!" }
+    println(noArgFunction()) // Hello, World!
 
-    val numbers2 = listOf(1, -2, 3, -4, 5, -6)
-    val doubled = numbers2.map { x -> x * 2 }
-    println(doubled) // [2, -4, 6, -8, 10, -12]
-
-    val isTripled = { x: Int -> x * 3 }
-    val tripled = numbers.map(isTripled)
-    println(tripled) // [3, -6, 9, -12, 15, -18]
+    // 无参数、无返回值函数类型
+    val noReturnFunction: () -> Unit = { println("Hello, World!") }
+    noReturnFunction()
 }
+
+
+
