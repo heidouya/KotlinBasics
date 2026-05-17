@@ -31,13 +31,35 @@ object 对象名 : 父类名, 接口名 {
     // 成员
 }
 */
-object MyObject : MyInterface {
-    override fun myMethod() {
-        println("MyObject myMethod")
+// object MyObject : MyInterface {
+//     override fun myMethod() {
+//         println("MyObject myMethod")
+//     }
+// }
+// interface MyInterface {
+//     fun myMethod()
+// }
+//-------------------数据对象-------------------
+/*
+数据对象：使用 data 关键字声明的对象，Kotlin 会自动为其实现 equals()、hashCode()、toString() 等方法。
+
+数据对象的语法如下：
+data object 对象名 {
+    // 成员
+}
+*/
+fun main() {
+    println(Singleton) // Singleton
+    Singleton.sayHello() // Hello, Singleton
+}
+
+data object Singleton {
+    var name: String = "Singleton"
+    fun sayHello() {
+        println("Hello, $name")
     }
 }
-interface MyInterface {
-    fun myMethod()
-}
+
+
 
 
