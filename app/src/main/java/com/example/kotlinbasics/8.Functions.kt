@@ -19,15 +19,24 @@ fun sum(x: Int, y: Int): Int {
 //    return x + y
 // }
 //---------------具名参数----------------
+// fun main() {
+//     printMessageWithPrefix("Hello", "Log")
+//
+//     // 使用具名参数可以改变参数的顺序
+//     printMessageWithPrefix(prefix = "Log", message = "Hello")
+// }
+//
+// fun printMessageWithPrefix(message: String, prefix: String) {
+//     println("[$prefix] $message")
+// }
+//---------------默认参数-----------------
+// 默认参数值允许在函数定义中为参数提供默认值，如果调用函数时没有提供该参数的值，则将使用默认值。
 fun main() {
-    printMessageWithPrefix("Hello", "Log")
-
-    // 使用具名参数可以改变参数的顺序
-    printMessageWithPrefix(prefix = "Log", message = "Hello")
+   printMessageWithPrefix("Hello") // Info Hello
 }
 
-fun printMessageWithPrefix(message: String, prefix: String) {
-    println("[$prefix] $message")
+fun printMessageWithPrefix(message: String="1", prefix: String = "Info") {
+   println("$prefix $message")
 }
 
 
