@@ -9,14 +9,25 @@ fun sum(x: Int, y: Int): Int {
     return x + y
 }
 */
+// fun main() {
+//    val res = sum(1, 2)
+//    println(res)
+// }
+//
+// // 函数如果有返回值，返回值类型不能省略
+// fun sum(x: Int, y: Int): Int {
+//    return x + y
+// }
+//---------------具名参数----------------
 fun main() {
-   val res = sum(1, 2)
-   println(res)
+    printMessageWithPrefix("Hello", "Log")
+
+    // 使用具名参数可以改变参数的顺序
+    printMessageWithPrefix(prefix = "Log", message = "Hello")
 }
 
-// 函数如果有返回值，返回值类型不能省略
-fun sum(x: Int, y: Int): Int {
-   return x + y
+fun printMessageWithPrefix(message: String, prefix: String) {
+    println("[$prefix] $message")
 }
 
 
