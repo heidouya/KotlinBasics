@@ -40,12 +40,26 @@ fun sum(x: Int, y: Int): Int {
 // }
 //-------------无返回值函数--------------
 // 函数可以没有返回值，这种函数的返回类型是 Unit，可以省略。例如：
+// fun main() {
+//    printMessage("Hello") // Hello
+//    // `return Unit` or `return` is optional
+// }
+// fun printMessage(message: String) {
+//    println(message)
+// }
+//----------------单一表达式函数-----------------
+// 单一表达式函数是只包含一个表达式的函数，编译器会自动返回该表达式的值。
+// 单一表达式函数的语法是：fun functionName(parameters): ReturnType = expression
+// 例如：
 fun main() {
-   printMessage("Hello") // Hello
-   // `return Unit` or `return` is optional
+    val res = sum2(1, 2)
+   println(res) // 3
 }
-fun printMessage(message: String) {
-   println(message)
+
+fun sum1(x: Int, y: Int): Int {
+   return x + y;
 }
+// 可以省略返回值类型
+fun sum2(x: Int, y: Int) = x + y;
 
 
