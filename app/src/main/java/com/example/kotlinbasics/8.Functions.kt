@@ -31,12 +31,21 @@ fun sum(x: Int, y: Int): Int {
 // }
 //---------------默认参数-----------------
 // 默认参数值允许在函数定义中为参数提供默认值，如果调用函数时没有提供该参数的值，则将使用默认值。
+// fun main() {
+//    printMessageWithPrefix("Hello") // Info Hello
+// }
+//
+// fun printMessageWithPrefix(message: String="1", prefix: String = "Info") {
+//    println("$prefix $message")
+// }
+//-------------无返回值函数--------------
+// 函数可以没有返回值，这种函数的返回类型是 Unit，可以省略。例如：
 fun main() {
-   printMessageWithPrefix("Hello") // Info Hello
+   printMessage("Hello") // Hello
+   // `return Unit` or `return` is optional
 }
-
-fun printMessageWithPrefix(message: String="1", prefix: String = "Info") {
-   println("$prefix $message")
+fun printMessage(message: String) {
+   println(message)
 }
 
 
