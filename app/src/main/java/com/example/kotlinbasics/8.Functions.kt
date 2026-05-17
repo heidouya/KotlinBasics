@@ -131,17 +131,29 @@ fun sum(x: Int, y: Int): Int {
 
 函数类型可以赋值给变量，也可以作为参数传递给函数，还可以作为函数的返回值。
  */
+// fun main() {
+//    val upperCaseString: (String) -> String = { text -> text.uppercase() }
+//    println(upperCaseString("hello")) // HELLO
+//
+//     // 无参数函数类型
+//     val noArgFunction: () -> String = { "Hello, World!" }
+//     println(noArgFunction()) // Hello, World!
+//
+//     // 无参数、无返回值函数类型
+//     val noReturnFunction: () -> Unit = { println("Hello, World!") }
+//     noReturnFunction()
+// }
+//-------------从函数返回一个拉姆达表达式-------------------
 fun main() {
-   val upperCaseString: (String) -> String = { text -> text.uppercase() }
-   println(upperCaseString("hello")) // HELLO
+    val fn: () -> (text: String) -> String = {
+        {text: String -> text.uppercase()}
+    }
 
-    // 无参数函数类型
-    val noArgFunction: () -> String = { "Hello, World!" }
-    println(noArgFunction()) // Hello, World!
-
-    // 无参数、无返回值函数类型
-    val noReturnFunction: () -> Unit = { println("Hello, World!") }
-    noReturnFunction()
+    val upperCaseString = fn()
+    println(upperCaseString("hello"))
+}
+fun fn(): (text: String) -> String {
+    return {text: String -> text.uppercase()}
 }
 
 
