@@ -156,9 +156,22 @@ fun sum(x: Int, y: Int): Int {
 //     return {text: String -> text.uppercase()}
 // }
 //-------------拉姆达表达式自调用--------------------
+// fun main() {
+//     val text = { text: String -> text.uppercase() }("hello")
+//     println(text)
+// }
+// ------------尾随拉姆达表达式------------
+// 尾随拉姆达表达式（Trailing Lambda Expressions）是 Kotlin 中的一种语法糖，用于简化代码，使代码更易读。当一个函数的最后一个参数是一个拉姆达表达式时，可以将拉姆达表达式移到函数括号之外。
 fun main() {
-    val text = { text: String -> text.uppercase() }("hello")
-    println(text)
+    // 1. lambda表达式是唯一的函数参数，你可以去掉函数括号（）
+    // listOf(1, -2, 3).filter({ x -> x > 0 })
+
+    listOf(1, -2, 3).filter { x -> x > 0 }
+
+    // 2. lambda表达式作为函数的最后一个参数传递，表达式可以写在函数括号（）之外。
+    // listOf(1, 2, 3).fold(0, { x, item -> x + item })
+
+    listOf(1, 2, 3).fold(0) { x, item -> x + item } // 6
 }
 
 
