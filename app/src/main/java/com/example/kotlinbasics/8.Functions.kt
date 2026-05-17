@@ -162,16 +162,30 @@ fun sum(x: Int, y: Int): Int {
 // }
 // ------------尾随拉姆达表达式------------
 // 尾随拉姆达表达式（Trailing Lambda Expressions）是 Kotlin 中的一种语法糖，用于简化代码，使代码更易读。当一个函数的最后一个参数是一个拉姆达表达式时，可以将拉姆达表达式移到函数括号之外。
+// fun main() {
+//     // 1. lambda表达式是唯一的函数参数，你可以去掉函数括号（）
+//     // listOf(1, -2, 3).filter({ x -> x > 0 })
+//
+//     listOf(1, -2, 3).filter { x -> x > 0 }
+//
+//     // 2. lambda表达式作为函数的最后一个参数传递，表达式可以写在函数括号（）之外。
+//     // listOf(1, 2, 3).fold(0, { x, item -> x + item })
+//
+//     listOf(1, 2, 3).fold(0) { x, item -> x + item } // 6
+// }
+//-------------------函数扩展-------------------
+/*
+函数扩展是 Kotlin 中的一种功能，允许你为一个已经存在的类添加新的功能，而不需要继承该类或使用设计模式。
+函数扩展的语法是：fun receiverType.functionName(parameters): ReturnType { ... }
+例如：
+*/
 fun main() {
-    // 1. lambda表达式是唯一的函数参数，你可以去掉函数括号（）
-    // listOf(1, -2, 3).filter({ x -> x > 0 })
+    val str = "Hello, World!"
+    println(str.lastChar()) // 输出: d
+}
 
-    listOf(1, -2, 3).filter { x -> x > 0 }
-
-    // 2. lambda表达式作为函数的最后一个参数传递，表达式可以写在函数括号（）之外。
-    // listOf(1, 2, 3).fold(0, { x, item -> x + item })
-
-    listOf(1, 2, 3).fold(0) { x, item -> x + item } // 6
+fun String.lastChar(): Char {
+    return this[this.length - 1]
 }
 
 
