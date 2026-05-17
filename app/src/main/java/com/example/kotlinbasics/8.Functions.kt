@@ -51,15 +51,26 @@ fun sum(x: Int, y: Int): Int {
 // 单一表达式函数是只包含一个表达式的函数，编译器会自动返回该表达式的值。
 // 单一表达式函数的语法是：fun functionName(parameters): ReturnType = expression
 // 例如：
+// fun main() {
+//     val res = sum2(1, 2)
+//    println(res) // 3
+// }
+//
+// fun sum1(x: Int, y: Int): Int {
+//    return x + y;
+// }
+// // 可以省略返回值类型
+// fun sum2(x: Int, y: Int) = x + y;
+//----------------函数提前返回------------------
 fun main() {
-    val res = sum2(1, 2)
-   println(res) // 3
+    println(isAuth(true))
 }
 
-fun sum1(x: Int, y: Int): Int {
-   return x + y;
+fun isAuth(isAuth: Boolean): String {
+    if (isAuth) {
+        return "已经授权"
+    }
+    return "未授权"
 }
-// 可以省略返回值类型
-fun sum2(x: Int, y: Int) = x + y;
 
 
