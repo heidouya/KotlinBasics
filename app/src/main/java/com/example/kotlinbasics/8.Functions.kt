@@ -265,17 +265,45 @@ apply 函数是 Kotlin 中的一种作用域函数，它接受一个 lambda 表�
 */
 // val client = Client()
 
-val client = Client().apply {
+// val client = Client().apply {
+//     token = "asdf"
+// }
+//
+// fun main() {
+//     client.token = "asdf"
+//     client.getData()
+// }
+//
+// class Client() {
+//     var token: String? = null
+//     fun getData() : String {
+//         println("getting data!")
+//         return "Mock data"
+//     }
+// }
+// ------------------run------------------
+/*
+run 函数是 Kotlin 中的一种作用域函数，它接受一个 lambda 表达式作为参数，并将调用该函数的对象作为参数传递给 lambda 表达式。run 函数的返回值是 lambda 表达式的返回值。
+*/
+val client: Client = Client().apply {
     token = "asdf"
 }
 
 fun main() {
-    client.token = "asdf"
-    client.getData()
+    val result: String = client.run {
+        connect()
+        // connected!
+        authenticate()
+        // authenticated!
+        getData()
+        // getting data!
+    }
 }
 
 class Client() {
     var token: String? = null
+    fun connect() = println("connected!")
+    fun authenticate() = println("authenticated!")
     fun getData() : String {
         println("getting data!")
         return "Mock data"
