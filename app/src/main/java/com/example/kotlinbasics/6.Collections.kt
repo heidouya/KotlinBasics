@@ -64,21 +64,45 @@ package com.example.kotlinbasics
 
 //-----------------------Array-----------------------
 // kotlin中的数组：固定不变，创建后不能增删
+// fun main() {
+//     val arr: Array<Int> = arrayOf(1, 2, 3, 4, 5)
+//
+//     // 修改元素
+//     arr[0] = 0
+//
+//    //  报错，没有add方法
+//    // arr.add()
+//    // 报错 Index 5 out of bounds for length 5
+//    // arr[5] = 6;
+//
+//     println(arr.size) // 输出数组的大小
+//
+//     // 遍历数组
+//     for (i in arr) println(i)
+//     // 哈哈哈
+//     print("Array elements: ")
+// }
+
+//-----------------------Set-----------------------
 fun main() {
-    val arr: Array<Int> = arrayOf(1, 2, 3, 4, 5)
+    // Read-only set
+    val readOnlyFruit = setOf("apple", "apple", "banana", "cherry", "cherry")
+    println(readOnlyFruit)
 
-    // 修改元素
-    arr[0] = 0
+    // 获取集合中元素个数
+    val count = readOnlyFruit.count()
+    // 获取集合中的第一个元素
+    val firstItem = readOnlyFruit.first()
+    // 获取集合中的最后一个元素
+    val lastItem = readOnlyFruit.last()
+    // 某个元素是否存在集合中
+    val isExist = "banana" in readOnlyFruit
 
-   //  报错，没有add方法
-   // arr.add()
-   // 报错 Index 5 out of bounds for length 5
-   // arr[5] = 6;
+    // Mutable set with explicit type declaration
+    val fruit: MutableSet<String> = mutableSetOf("apple", "banana", "cherry", "cherry")
 
-    println(arr.size) // 输出数组的大小
-
-    // 遍历数组
-    for (i in arr) println(i)
-    // 哈哈哈
-    print("Array elements: ")
+    // 添加元素
+    fruit.add("dragon-fruit")
+    // 移除元素
+    fruit.remove("dragon-fruit")
 }
