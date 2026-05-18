@@ -48,18 +48,40 @@ data object 对象名 {
     // 成员
 }
 */
-fun main() {
-    println(Singleton) // Singleton
-    Singleton.sayHello() // Hello, Singleton
+// fun main() {
+//     println(Singleton) // Singleton
+//     Singleton.sayHello() // Hello, Singleton
+// }
+//
+// data object Singleton {
+//     var name: String = "Singleton"
+//     fun sayHello() {
+//         println("Hello, $name")
+//     }
+// }
+//-----------------伴生对象-------------------
+/*
+伴生对象：使用 companion object 关键字声明的对象，可以像访问静态成员一样访问对象的属性和方法。伴生对象中可以包含构造函数、属性、方法等。伴生对象的成员可以通过对象名直接访问。伴生对象是单例的，即在整个程序运行期间，该对象只有一个实例存在。每个类最多一个 companion object。
+
+伴生对象的语法如下：
+companion object 对象名 {
+    // 成员
 }
 
-data object Singleton {
-    var name: String = "Singleton"
-    fun sayHello() {
-        println("Hello, $name")
+Kotlin 没有 static 关键字，用 companion object 替代
+*/
+class MyClass {
+    // 如果未定义名称，默认名称为 Companion
+    companion object {
+        var name: String = "MyClass"
+        fun sayHello() {
+            println("Hello, $name")
+        }
     }
 }
 
-
-
-
+fun main() {
+    // 通过类名访问伴生对象的属性和方法
+    println(MyClass.name)
+    MyClass.sayHello()
+}
