@@ -38,16 +38,43 @@ class ClassName {
 //     println(contact4.email)
 // }
 //--------------成员函数---------------
+// fun main() {
+//     class Contact(val id: Int, var email: String) {
+//         // 成员函数
+//         fun printId() {
+//             println(id)
+//         }
+//     }
+//
+//     val contact = Contact(1, "mary@gmail.com")
+//
+//    contact.printId() // 1
+// }
+//-------------数据类--------------
+// 数据类 自动实现 toString() equals() hashCode() copy()等函数，无需手动编写，简化代码，提高可读性，且可以比较对象是否相等，使用data关键字定义
 fun main() {
-    class Contact(val id: Int, var email: String) {
-        // 成员函数
-        fun printId() {
-            println(id)
-        }
-    }
+    // 普通类，不使用data关键字定义
+    class User1(val name: String, val id: Int)
+    val user = User1("Alex", 1)
+    println(user.toString())
+    println(user)
 
-    val contact = Contact(1, "mary@gmail.com")
+    // 数据类，使用data关键字定义
+    data class User2(val name: String, val id: Int)
+    val user2 = User2("Alex", 1)
+    println(user2.toString())
+    println(user2) // User2(name=Alex, id=1)
 
-   contact.printId() // 1
+    // == 比较对象是否相等
+    val user3 = User1("Alex", 1)
+    println(user3 == user2) // false
+
+    // copy() 复制对象
+    val user4 = user2.copy()
+    println(user4 == user2) // true
+
+    // copy() 复制对象，可以修改属性值
+    val user5 = user2.copy(name = "Bob")
+    println(user5 == user2) // false
+    println(user5) // User2(name=Bob, id=1)
 }
-
