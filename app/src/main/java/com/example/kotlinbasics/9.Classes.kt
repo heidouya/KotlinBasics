@@ -16,11 +16,25 @@ class ClassName {
 类的定义使用class关键字，类名通常使用大写字母开头，例如：class MyClass { }
 */
 //----------------------类----------------------
+// fun main() {
+//     val animal = Animal()
+// }
+//
+// class Animal {}
+//----------------------类成员属性和方法----------------------
 fun main() {
     val animal = Animal()
+    animal.name = "Dog"
+    println(animal.name)
+    animal.makeSound()
 }
-
-class Animal {}
+class Animal {
+    var name: String = "Animal" // 类成员属性
+    // 类成员方法
+    fun makeSound() {
+        println("Some generic animal sound")
+    }
+}
 
 //-------------数据类--------------
 // 数据类 自动实现 toString() equals() hashCode() copy()等函数，无需手动编写，简化代码，提高可读性，且可以比较对象是否相等，使用data关键字定义
