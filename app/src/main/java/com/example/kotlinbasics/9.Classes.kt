@@ -9,48 +9,19 @@ class ClassName {
 
 数据类 自动实现 toString() equals() hashCode() copy()等函数，无需手动编写，简化代码，提高可读性，且可以比较对象是否相等，使用data关键字定义
 */
-//---------类属性------------
-// fun main() {
-//     // 在类名后的括号()内定义声明属性
-//     class Contact1(val id: Int, var email: String)
-//     // 创建实例
-//     val contact1 = Contact1(1, "mary@gmail.com")
-//     // 访问属性
-//     println(contact1.email)
-//
-//     //-----------------------------------
-//     // 在括号内声明不带 val 或 var 的属性，这些属性在实例创建后无法被访问
-//     class Contact2(id: Int, email:String)
-//     val contact2 = Contact2(1, "mary@gmail.com")
-//     // println(contact2.email)
-//
-//     //-------------类体中定义声明属性------------
-//     class Contact3(val id: Int, var email: String) {
-//         val category: String = ""
-//     }
-//     val contact3 = Contact3(1, "mary@gmail.com")
-//     println(contact3.email)
-//
-//     //--------------带默认值的构造函数----------
-//     class Contact4(val id: Int, var email: String = "example@gmail.com") {
-//         val category: String = "work"
-//     }
-//     val contact4 = Contact4(1)
-//     println(contact4.email)
-// }
-//--------------成员函数---------------
-// fun main() {
-//     class Contact(val id: Int, var email: String) {
-//         // 成员函数
-//         fun printId() {
-//             println(id)
-//         }
-//     }
-//
-//     val contact = Contact(1, "mary@gmail.com")
-//
-//    contact.printId() // 1
-// }
+//-----------------------类----------------------
+/*
+类是面向对象编程中的一个重要概念，它是一种数据结构，用于将数据（属性）和操作数据的方法（函数）封装在一起。类是对象的蓝图或模板，通过类可以创建对象（实例）。
+
+类的定义使用class关键字，类名通常使用大写字母开头，例如：class MyClass { }
+*/
+//----------------------类----------------------
+fun main() {
+    val animal = Animal()
+}
+
+class Animal {}
+
 //-------------数据类--------------
 // 数据类 自动实现 toString() equals() hashCode() copy()等函数，无需手动编写，简化代码，提高可读性，且可以比较对象是否相等，使用data关键字定义
 // fun main() {
@@ -140,42 +111,42 @@ Kotlin中的类默认是final的，不能被继承，需要使用open关键字�
 
 抽象类的本质就是一种约束机制。用编译器来保证代码的正确性，而不是依赖开发者"记得"去做某件事。 这在大型项目或团队协作中尤为重要。
 */
-fun main() {
-    val book = Books("1984", 10.99, "George Orwell")
-
-    book.id = 1
-
-    println(book.productInfo2())
-
-    val electronic = Electronic("Laptop", 1000.99, 12)
-    electronic.id = 2
-    println(electronic.productInfo2())
-}
-
-abstract class Product(val name: String, var price: Double) {
-    // 抽象属性，子类必须实现，不能有实现
-    abstract val category: String
-    // 抽象方法，子类必须实现，不能有实现
-    abstract fun productInfo1(): String
-
-    // 具体属性，子类可以继承
-    var id: Int = 0
-    // 具体方法，子类可以继承
-    fun productInfo2(): String {
-        return "Product: $name, Category: $category, Price: $price"
-    }
-}
-
-class Books(name: String, price: Double, val author: String) : Product(name, price) {
-    override val category: String = "Book"
-    override fun productInfo1(): String {
-        return "Product: $name, Category: $category, Price: $price, Author: $author"
-    }
-}
-
-class Electronic(name: String, price: Double, val warranty: Int) : Product(name, price) {
-    override val category = "Electronic"
-    override fun productInfo1(): String {
-        return "Product: $name, Category: $category, Price: $price, Warranty: $warranty"
-    }
-}
+// fun main() {
+//     val book = Books("1984", 10.99, "George Orwell")
+//
+//     book.id = 1
+//
+//     println(book.productInfo2())
+//
+//     val electronic = Electronic("Laptop", 1000.99, 12)
+//     electronic.id = 2
+//     println(electronic.productInfo2())
+// }
+//
+// abstract class Product(val name: String, var price: Double) {
+//     // 抽象属性，子类必须实现，不能有实现
+//     abstract val category: String
+//     // 抽象方法，子类必须实现，不能有实现
+//     abstract fun productInfo1(): String
+//
+//     // 具体属性，子类可以继承
+//     var id: Int = 0
+//     // 具体方法，子类可以继承
+//     fun productInfo2(): String {
+//         return "Product: $name, Category: $category, Price: $price"
+//     }
+// }
+//
+// class Books(name: String, price: Double, val author: String) : Product(name, price) {
+//     override val category: String = "Book"
+//     override fun productInfo1(): String {
+//         return "Product: $name, Category: $category, Price: $price, Author: $author"
+//     }
+// }
+//
+// class Electronic(name: String, price: Double, val warranty: Int) : Product(name, price) {
+//     override val category = "Electronic"
+//     override fun productInfo1(): String {
+//         return "Product: $name, Category: $category, Price: $price, Warranty: $warranty"
+//     }
+// }
