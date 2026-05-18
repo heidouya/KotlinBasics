@@ -84,25 +84,92 @@ package com.example.kotlinbasics
 // }
 
 //-----------------------Set-----------------------
+// fun main() {
+//     // Read-only set
+//     val readOnlyFruit = setOf("apple", "apple", "banana", "cherry", "cherry")
+//     println(readOnlyFruit)
+//
+//     // 获取集合中元素个数
+//     val count = readOnlyFruit.count()
+//     // 获取集合中的第一个元素
+//     val firstItem = readOnlyFruit.first()
+//     // 获取集合中的最后一个元素
+//     val lastItem = readOnlyFruit.last()
+//     // 某个元素是否存在集合中
+//     val isExist = "banana" in readOnlyFruit
+//
+//     // Mutable set with explicit type declaration
+//     val fruit: MutableSet<String> = mutableSetOf("apple", "banana", "cherry", "cherry")
+//
+//     // 添加元素
+//     fruit.add("dragon-fruit")
+//     // 移除元素
+//     fruit.remove("dragon-fruit")
+// }
+
+//-----------------------Map-----------------------
+/*
+Map：键值对的集合，键是唯一的，值可以重复
+- mapOf()：创建只读映射，不能添加或删除元素
+- mutableMapOf()：创建可变映射，可以添加或删除元素
+- to：创建键值对，例如 "apple" to 100
+- get()：获取指定键的值，如果不存在则返回null
+- containsKey()：检查某个键是否在映射中
+- containsValue()：检查某个值是否在映射中
+- keys：获取映射中的所有键
+- values：获取映射中的所有值
+- entries：获取映射中的所有键值对
+- isEmpty()：检查映射是否为空
+- isNotEmpty()：检查映射是否不为空
+- size：获取映射中键值对的个数
+- forEach()：遍历映射中的所有键值对
+*/
+
 fun main() {
-    // Read-only set
-    val readOnlyFruit = setOf("apple", "apple", "banana", "cherry", "cherry")
-    println(readOnlyFruit)
+    // Read-only map
+    val contacts = mapOf("Alice" to "138xxxx", "Bob" to "139xxxx")
+    println(contacts)
 
-    // 获取集合中元素个数
-    val count = readOnlyFruit.count()
-    // 获取集合中的第一个元素
-    val firstItem = readOnlyFruit.first()
-    // 获取集合中的最后一个元素
-    val lastItem = readOnlyFruit.last()
-    // 某个元素是否存在集合中
-    val isExist = "banana" in readOnlyFruit
+    // 访问某个元素
+    val phoneNumber = contacts["Alice"]
+    println("phoneNumber=$phoneNumber")
+    // 集合元素数量
+    val count = contacts.count()
+    println("count=$count")
+    // 检查某个特定的键是否已经存在
+    val isExist = contacts.containsKey("kiwi")
+    println("isExist=$isExist")
+    // 获取map中的所有键
+    println("keys=${contacts.keys}")
+    // 获取map中的所有值
+    println("values=${contacts.values}")
+    // 键是否已经存在
+    println("\"Alice\" in readOnlyJuiceMenu=${"Alice" in contacts}")
+    // 值是否已经存在
+    println("138xxxx in readOnlyJuiceMenu.values=${"138xxxx" in contacts.values}")
 
-    // Mutable set with explicit type declaration
-    val fruit: MutableSet<String> = mutableSetOf("apple", "banana", "cherry", "cherry")
+    // Mutable map with explicit type declaration
+    val juiceMenu: MutableMap<String, Int> =
+        mutableMapOf("apple" to 100, "kiwi" to 190, "orange" to 100)
+    println(juiceMenu)
 
     // 添加元素
-    fruit.add("dragon-fruit")
+    juiceMenu["coconut"] = 150
     // 移除元素
-    fruit.remove("dragon-fruit")
+    juiceMenu.remove("orange")
+
+    //-----------------------Map遍历-----------------------
+    val scores = mapOf("Alice" to 95, "Bob" to 87)
+
+    // 遍历键值对（推荐）
+    for ((name, score) in scores) {
+        println("$name: $score")
+    }
+    // 遍历 entries
+    scores.forEach { (name, score) ->
+        println("$name: $score")
+    }
+    // 只遍历键 / 只遍历值
+    scores.keys.forEach { println(it) }
+    scores.values.forEach { println(it) }
 }
