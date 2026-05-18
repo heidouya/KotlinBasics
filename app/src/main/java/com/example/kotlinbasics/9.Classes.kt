@@ -45,64 +45,89 @@ class ClassName {
 5. 构造函数可以有参数，也可以没有参数，参数可以有默认值。
 6. 构造函数可以访问类的属性，但不能访问类的方法。
 */
+// fun main() {
+//     val person1 = Person1()
+//
+//     val person2 = Person2("Alice", 25)
+//     person2.name = "Bob"
+//     person2.age = 30
+//
+//     val person3 = Person3("Alice", 25)
+//     person3.printInfo()
+//
+//     val person4 = Person4("Alice", 25)
+//     person4.printInfo()
+//
+//     val person5 = Person5("Alice", 25)
+// }
+//
+// // 不显示构造函数
+// class Person1 {}
+//
+// // 只包含主构造函数的类
+// class Person2(var name: String, var age: Int) {}
+//
+// // 次构造函数
+// class Person3 {
+//     var name: String = ""
+//     var age: Int = 0
+//     // 次构造函数参数不能使用var或val声明
+//     constructor(name: String, age: Int) {
+//         this.name = name
+//         this.age = age
+//     }
+//
+//     fun printInfo() {
+//         // 成员方法内访问属性，可以使用this关键字，也可以不使用
+//         println("Name3: $name, Age3: $age")
+//         println("Name3: ${this.name}, Age3: ${this.age}")
+//     }
+// }
+//
+// // 包含主构造函数和次构造函数的类
+// class Person4(var name: String = "") {
+//     var age: Int = 0
+//     // 次构造器必须委托给主构造器（this(...)）
+//     constructor(name: String, age: Int = 10) : this(name) {
+//         this.age = age
+//     }
+//     fun printInfo() {
+//         println("Name4: $name, Age4: $age")
+//     }
+// }
+//
+// // 主构造函数内声明不带 val 或 var 的属性，这些属性在实例创建后无法被访问
+// class Person5(name: String, age: Int) {
+//     // fun printInfo() {
+//     //     println("Name5: $name, Age5: $age")
+//     // }
+// }
+//------------------多个构造函数------------------
+/*
+多个构造函数：
+1. 一个类最多一个主构造器（声明在类头），可以有多个次构造器
+2. 所有次构造器必须直接或间接委托给主构造器（使用 this(...)）
+3. 主构造函数：写在类头，用于初始化对象的属性，只能有一个主构造函数，但可以有多个次构造函数。
+4. 次构造函数：写在类体中，用于初始化对象的属性，可以有多个次构造函数，每个次构造函数都必须委托给主构造函数或另一个次构造函数。
+*/
+
 fun main() {
-    val person1 = Person1()
-
-    val person2 = Person2("Alice", 25)
-    person2.name = "Bob"
-    person2.age = 30
-
-    val person3 = Person3("Alice", 25)
-    person3.printInfo()
-
-    val person4 = Person4("Alice", 25)
-    person4.printInfo()
-
-    val person5 = Person5("Alice", 25)
+    val person1 = Person("Alice", 20)  // 主构造器
+    val person2 = Person("Bob")    // 次构造器1
+    val person3 = Person(25)   // 次构造器2
+    val person4 = Person() // 次构造器3
 }
 
-// 不显示构造函数
-class Person1 {}
+class Person(val name: String, val age: Int) {
+    // 次构造器1：只传名字，年龄默认18
+    constructor(name: String) : this(name, 18)
 
-// 只包含主构造函数的类
-class Person2(var name: String, var age: Int) {}
+    // 次构造器2：只传年龄，名字默认"Unknown"
+    constructor(age: Int) : this("Unknown", age)
 
-// 次构造函数
-class Person3 {
-    var name: String = ""
-    var age: Int = 0
-    // 次构造函数参数不能使用var或val声明
-    constructor(name: String, age: Int) {
-        this.name = name
-        this.age = age
-    }
-
-    fun printInfo() {
-        // 成员方法内访问属性，可以使用this关键字，也可以不使用
-        println("Name3: $name, Age3: $age")
-        println("Name3: ${this.name}, Age3: ${this.age}")
-    }
+    // 次构造器3：无参，全部使用默认值
+    constructor() : this("Unknown", 0)
 }
-
-// 包含主构造函数和次构造函数的类
-class Person4(var name: String = "") {
-    var age: Int = 0
-    // 次构造器必须委托给主构造器（this(...)）
-    constructor(name: String, age: Int = 10) : this(name) {
-        this.age = age
-    }
-    fun printInfo() {
-        println("Name4: $name, Age4: $age")
-    }
-}
-
-// 主构造函数内声明不带 val 或 var 的属性，这些属性在实例创建后无法被访问
-class Person5(name: String, age: Int) {
-    // fun printInfo() {
-    //     println("Name5: $name, Age5: $age")
-    // }
-}
-
 
 //-------------数据类--------------
 // 数据类 自动实现 toString() equals() hashCode() copy()等函数，无需手动编写，简化代码，提高可读性，且可以比较对象是否相等，使用data关键字定义
