@@ -100,28 +100,82 @@ Kotlin中的类默认是final的，不能被继承，需要使用open关键字�
 其中 Animal 是父类，Dog 是子类。
 */
 // Kotlin中的类默认是final的，不能被继承，需要使用open关键字定义可继承的类
+// fun main() {
+//
+//     val dog = Dog()
+//
+//     dog.age = 10
+//     dog.name = "Buddy"
+//     dog.makeSound()
+// }
+//
+// open class Animal(var name: String) {
+//     open fun makeSound() {
+//         println("Some generic animal sound")
+//     }
+// }
+// class Dog : Animal("Buddy") {
+//     // 子类可以有自己的属性
+//     var age: Int = 1
+//     override fun makeSound() {
+//         // 通过super调用父类的name属性，this调用当前对象的属性
+//         println("Name: ${super.name}")
+//         println("Age: ${this.age}")
+//
+//         println("Bark")
+//     }
+// }
+
+//-----------------------------抽象类--------------------------
+/*
+抽象类是不能被实例化的类，它通常用于定义子类的模板，子类需要实现抽象类中的抽象方法。抽象类使用abstract关键字定义，抽象方法使用abstract关键字定义。
+
+抽象属性、抽象方法必须实现。
+
+抽象类既可以包含具有实现的方法和属性，也可以包含不具有实现的方法和属性，后者被称为抽象方法和抽象属性。
+
+抽象类（abstract class）无需 open，默认可继承。
+
+抽象类的作用是定义一个模板，子类需要实现抽象类中的抽象方法，从而实现多态。
+
+抽象类的本质就是一种约束机制。用编译器来保证代码的正确性，而不是依赖开发者"记得"去做某件事。 这在大型项目或团队协作中尤为重要。
+*/
 fun main() {
+    val book = Books("1984", 10.99, "George Orwell")
 
-    val dog = Dog()
+    book.id = 1
 
-    dog.age = 10
-    dog.name = "Buddy"
-    dog.makeSound()
+    println(book.productInfo2())
+
+    val electronic = Electronic("Laptop", 1000.99, 12)
+    electronic.id = 2
+    println(electronic.productInfo2())
 }
 
-open class Animal(var name: String) {
-    open fun makeSound() {
-        println("Some generic animal sound")
+abstract class Product(val name: String, var price: Double) {
+    // 抽象属性，子类必须实现，不能有实现
+    abstract val category: String
+    // 抽象方法，子类必须实现，不能有实现
+    abstract fun productInfo1(): String
+
+    // 具体属性，子类可以继承
+    var id: Int = 0
+    // 具体方法，子类可以继承
+    fun productInfo2(): String {
+        return "Product: $name, Category: $category, Price: $price"
     }
 }
-class Dog : Animal("Buddy") {
-    // 子类可以有自己的属性
-    var age: Int = 1
-    override fun makeSound() {
-        // 通过super调用父类的name属性，this调用当前对象的属性
-        println("Name: ${super.name}")
-        println("Age: ${this.age}")
 
-        println("Bark")
+class Books(name: String, price: Double, val author: String) : Product(name, price) {
+    override val category: String = "Book"
+    override fun productInfo1(): String {
+        return "Product: $name, Category: $category, Price: $price, Author: $author"
+    }
+}
+
+class Electronic(name: String, price: Double, val warranty: Int) : Product(name, price) {
+    override val category = "Electronic"
+    override fun productInfo1(): String {
+        return "Product: $name, Category: $category, Price: $price, Warranty: $warranty"
     }
 }
