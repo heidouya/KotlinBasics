@@ -333,15 +333,37 @@ Kotlin中的类默认是final的，不能被继承，需要使用open关键字�
 2. 密封类的子类数量有限制，如果子类数量过多，可能会导致代码复杂，不利于阅读。
 */
 
-sealed class Result {}
-data class Success(val data: Any) : Result()
-data class Error(val message: String) : Result()
+// sealed class Result {}
+// data class Success(val data: Any) : Result()
+// data class Error(val message: String) : Result()
+//
+// fun main() {
+//     val result: Result = Success(123)
+//     when (result) {
+//         is Success -> println(result.data)
+//         is Error -> println(result.message)
+//     }
+// }
 
+//-----------------------枚举类---------------------
+/*
+枚举类是一种特殊的类，它用于定义一组常量。枚举类使用enum关键字定义，枚举类的每个常量之间用逗号分隔。
+*/
 fun main() {
-    val result: Result = Success(123)
-    when (result) {
-        is Success -> println(result.data)
-        is Error -> println(result.message)
+    val direction = Direction.NORTH
+
+    println(direction) // 输出: NORTH
+
+    when (direction) {
+        Direction.NORTH -> println("North")
+        Direction.SOUTH -> println("South")
+        Direction.EAST -> println("East")
+        Direction.WEST -> println("West")
     }
 }
+
+enum class Direction {
+    NORTH, SOUTH, EAST, WEST
+}
+
 
