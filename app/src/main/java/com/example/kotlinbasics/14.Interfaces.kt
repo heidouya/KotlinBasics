@@ -35,52 +35,52 @@ class ClassName : InterfaceName1, InterfaceName2
 调用父接口的实现方法，可以使用 super<InterfaceName>.methodName() 语法。
 */
 
-fun main() {
-    val button = Button()
-    button.showOff()
-}
-
-interface Clickable {
-    fun showOff() = println("Clickable!")
-}
-
-interface Focusable {
-    fun showOff() = println("Focusable!")
-}
-
-class Button : Clickable, Focusable {
-    override fun showOff() {
-        // 调用父接口的实现方法
-        super<Clickable>.showOff()  // 调用 Clickable 的实现
-        super<Focusable>.showOff()  // 调用 Focusable 的实现
-    }
-}
+// fun main() {
+//     val button = Button()
+//     button.showOff()
+// }
+//
+// interface Clickable {
+//     fun showOff() = println("Clickable!")
+// }
+//
+// interface Focusable {
+//     fun showOff() = println("Focusable!")
+// }
+//
+// class Button : Clickable, Focusable {
+//     override fun showOff() {
+//         // 调用父接口的实现方法
+//         super<Clickable>.showOff()  // 调用 Clickable 的实现
+//         super<Focusable>.showOff()  // 调用 Focusable 的实现
+//     }
+// }
 // --------------------继承和接口-------------
 /*
 某个类可以继承一个父类并实现多个接口。这种情况下，必须先声明父类，在冒号之后，再列出接口，用逗号分隔。
 */
-// interface EcoFriendly {
-//     val emissionLevel: String
-// }
-//
-// interface ElectricVehicle {
-//     val batteryCapacity: Double
-// }
-//
-// open class Vehicle(val make: String, val model: String)
-//
-// open class Car(make: String, model: String, val numberOfDoors: Int) : Vehicle(make, model)
-//
-// class ElectricCar(
-//     make: String,
-//     model: String,
-//     numberOfDoors: Int,
-//     val capacity: Double,
-//     val emission: String
-// ) : Car(make, model, numberOfDoors), EcoFriendly, ElectricVehicle {
-//     override val batteryCapacity: Double = capacity
-//     override val emissionLevel: String = emission
-// }
+interface EcoFriendly {
+    val emissionLevel: String
+}
+
+interface ElectricVehicle {
+    val batteryCapacity: Double
+}
+
+open class Vehicle(val make: String, val model: String)
+
+open class Car(make: String, model: String, val numberOfDoors: Int) : Vehicle(make, model)
+
+class ElectricCar(
+    make: String,
+    model: String,
+    numberOfDoors: Int,
+    val capacity: Double,
+    val emission: String
+) : Car(make, model, numberOfDoors), EcoFriendly, ElectricVehicle {
+    override val batteryCapacity: Double = capacity
+    override val emissionLevel: String = emission
+}
 //-----------------代理-----------------
 // interface DrawingTool {
 //     val color: String
