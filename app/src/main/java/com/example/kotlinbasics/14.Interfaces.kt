@@ -59,61 +59,61 @@ class ClassName : InterfaceName1, InterfaceName2
 /*
 某个类可以继承一个父类并实现多个接口。这种情况下，必须先声明父类，在冒号之后，再列出接口，用逗号分隔。
 */
-interface EcoFriendly {
-    val emissionLevel: String
-}
-
-interface ElectricVehicle {
-    val batteryCapacity: Double
-}
-
-open class Vehicle(val make: String, val model: String)
-
-open class Car(make: String, model: String, val numberOfDoors: Int) : Vehicle(make, model)
-
-class ElectricCar(
-    make: String,
-    model: String,
-    numberOfDoors: Int,
-    val capacity: Double,
-    val emission: String
-) : Car(make, model, numberOfDoors), EcoFriendly, ElectricVehicle {
-    override val batteryCapacity: Double = capacity
-    override val emissionLevel: String = emission
-}
+// interface EcoFriendly {
+//     val emissionLevel: String
+// }
+//
+// interface ElectricVehicle {
+//     val batteryCapacity: Double
+// }
+//
+// open class Vehicle(val make: String, val model: String)
+//
+// open class Car(make: String, model: String, val numberOfDoors: Int) : Vehicle(make, model)
+//
+// class ElectricCar(
+//     make: String,
+//     model: String,
+//     numberOfDoors: Int,
+//     val capacity: Double,
+//     val emission: String
+// ) : Car(make, model, numberOfDoors), EcoFriendly, ElectricVehicle {
+//     override val batteryCapacity: Double = capacity
+//     override val emissionLevel: String = emission
+// }
 //-----------------代理-----------------
-// interface DrawingTool {
-//     val color: String
-//     fun draw(shape: String)
-//     fun erase(area: String)
-//     fun getToolInfo(): String
-// }
-//
-// class PenTool(override val color: String = "black") : DrawingTool {
-//     override fun draw(shape: String) = println("Drawing $shape using a pen in $color")
-//     override fun erase(area: String) = println("Erasing $area with a pen.")
-//     override fun getToolInfo(): String = "Pen color: $color"
-// }
-//
-// class BrushTool1(override val color: String = "orange") : DrawingTool {
-//     override fun draw(shape: String) = println("Drawing $shape using a brush in $color")
-//     override fun erase(area: String) = println("Erasing $area with a brush.")
-//     override fun getToolInfo(): String = "Brush color: $color"
-// }
-//
-// class BrushTool2(val tool: DrawingTool) : DrawingTool by tool {
-//     override val color: String = "blue"
-// }
-//
-// fun main() {
-//     val pen = PenTool()
-//     val brush = BrushTool2(pen)
-//
-//     println("Pen color: ${pen.color}") // Pen color: black
-//
-//     println("Brush color: ${brush.color}") // Brush color: blue
-//     brush.draw("circle") // Drawing circle using a pen in black
-//     brush.erase("top-left corner") // Erasing top-left corner with pen tool
-//     println(brush.getToolInfo()) // Pen color: black
-// }
+interface DrawingTool {
+    val color: String
+    fun draw(shape: String)
+    fun erase(area: String)
+    fun getToolInfo(): String
+}
+
+class PenTool(override val color: String = "black") : DrawingTool {
+    override fun draw(shape: String) = println("Drawing $shape using a pen in $color")
+    override fun erase(area: String) = println("Erasing $area with a pen.")
+    override fun getToolInfo(): String = "Pen color: $color"
+}
+
+class BrushTool1(override val color: String = "orange") : DrawingTool {
+    override fun draw(shape: String) = println("Drawing $shape using a brush in $color")
+    override fun erase(area: String) = println("Erasing $area with a brush.")
+    override fun getToolInfo(): String = "Brush color: $color"
+}
+
+class BrushTool2(val tool: DrawingTool) : DrawingTool by tool {
+    override val color: String = "blue"
+}
+
+fun main() {
+    val pen = PenTool()
+    val brush = BrushTool2(pen)
+
+    println("Pen color: ${pen.color}") // Pen color: black
+
+    println("Brush color: ${brush.color}") // Brush color: blue
+    brush.draw("circle") // Drawing circle using a pen in black
+    brush.erase("top-left corner") // Erasing top-left corner with pen tool
+    println(brush.getToolInfo()) // Pen color: black
+}
 
