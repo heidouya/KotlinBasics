@@ -238,28 +238,28 @@ Kotlin中的类默认是final的，不能被继承，需要使用open关键字�
 3. 重写方法时，方法名、参数列表必须与父类方法相同，返回类型可以不同。
 4. 重写方法时，可以使用super关键字调用父类方法。
 */
-open class Animal(var name: String) {
-    // 使用open关键字声明父类属性可被子类重写
-    open var age:Int = 0
-    // 使用open关键字声明父类方法可被子类重写
-    open fun makeSound() {
-        println("Some generic animal sound")
-    }
-}
-class Dog : Animal("Buddy") {
-    // 使用override关键字，重写父类方法，但不建议重写父类的属性
-    override var age:Int = 10
-    // 使用override关键字，重写父类方法
-    override fun makeSound() {
-        println("Bark")
-    }
-}
-
-fun main() {
-    val dog = Dog()
-    dog.makeSound()
-    println(dog.age)
-}
+// open class Animal(var name: String) {
+//     // 使用open关键字声明父类属性可被子类重写
+//     open var age:Int = 0
+//     // 使用open关键字声明父类方法可被子类重写
+//     open fun makeSound() {
+//         println("Some generic animal sound")
+//     }
+// }
+// class Dog : Animal("Buddy") {
+//     // 使用override关键字，重写父类方法，但不建议重写父类的属性
+//     override var age:Int = 10
+//     // 使用override关键字，重写父类方法
+//     override fun makeSound() {
+//         println("Bark")
+//     }
+// }
+//
+// fun main() {
+//     val dog = Dog()
+//     dog.makeSound()
+//     println(dog.age)
+// }
 
 //-----------------------------抽象类--------------------------
 /*
@@ -314,3 +314,34 @@ fun main() {
 //         return "Product: $name, Category: $category, Price: $price, Warranty: $warranty"
 //     }
 // }
+// -------------------密封类-------------------
+/*
+密封类是一种特殊的类，它限制了类的继承方式。密封类可以有子类，但子类必须在密封类的文件中定义。密封类通常用于表示有限数量的值，例如状态、事件等。
+
+密封类使用sealed关键字定义，密封类的子类可以是数据类，也可以不是数据类。
+
+密封类本身是抽象的，不能直接实例化，只能实例化它的子类。
+
+密封类的用途：当一个类有多个子类，并且这些子类都定义在同一个文件中时，可以使用密封类来限制类的继承方式，从而避免使用if-else或when表达式来处理多个子类的情况。
+
+密封类的优点：
+1. 代码更简洁，可以使用 when 表达式来处理多个子类的情况。
+2. 编译器可以检查密封类的子类是否覆盖了所有情况，从而避免忘记处理某个子类的情况。
+
+密封类的缺点：
+1. 密封类的子类必须在密封类的文件中定义，这可能会导致代码分散，不利于维护。
+2. 密封类的子类数量有限制，如果子类数量过多，可能会导致代码复杂，不利于阅读。
+*/
+
+sealed class Result {}
+data class Success(val data: Any) : Result()
+data class Error(val message: String) : Result()
+
+fun main() {
+    val result: Result = Success(123)
+    when (result) {
+        is Success -> println(result.data)
+        is Error -> println(result.message)
+    }
+}
+
