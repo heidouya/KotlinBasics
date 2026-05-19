@@ -1,5 +1,7 @@
 package com.example.kotlinbasics
 
+import android.R
+
 /*
 类和对象
 Kotlin中的类和对象的定义与Java类似，但Kotlin中的类默认是final的，不能被继承。
@@ -111,23 +113,23 @@ class ClassName {
 4. 次构造函数：写在类体中，用于初始化对象的属性，可以有多个次构造函数，每个次构造函数都必须委托给主构造函数或另一个次构造函数。
 */
 
-fun main() {
-    val person1 = Person("Alice", 20)  // 主构造器
-    val person2 = Person("Bob")    // 次构造器1
-    val person3 = Person(25)   // 次构造器2
-    val person4 = Person() // 次构造器3
-}
-
-class Person(val name: String, val age: Int) {
-    // 次构造器1：只传名字，年龄默认18
-    constructor(name: String) : this(name, 18)
-
-    // 次构造器2：只传年龄，名字默认"Unknown"
-    constructor(age: Int) : this("Unknown", age)
-
-    // 次构造器3：无参，全部使用默认值
-    constructor() : this("Unknown", 0)
-}
+// fun main() {
+//     val person1 = Person("Alice", 20)  // 主构造器
+//     val person2 = Person("Bob")    // 次构造器1
+//     val person3 = Person(25)   // 次构造器2
+//     val person4 = Person() // 次构造器3
+// }
+//
+// class Person(val name: String, val age: Int) {
+//     // 次构造器1：只传名字，年龄默认18
+//     constructor(name: String) : this(name, 18)
+//
+//     // 次构造器2：只传年龄，名字默认"Unknown"
+//     constructor(age: Int) : this("Unknown", age)
+//
+//     // 次构造器3：无参，全部使用默认值
+//     constructor() : this("Unknown", 0)
+// }
 
 //-------------数据类--------------
 // 数据类 自动实现 toString() equals() hashCode() copy()等函数，无需手动编写，简化代码，提高可读性，且可以比较对象是否相等，使用data关键字定义
@@ -203,6 +205,32 @@ Kotlin中的类默认是final的，不能被继承，需要使用open关键字�
 //         println("Bark")
 //     }
 // }
+//----------------------------继承注意事项------------------------
+// 如果你的类继承自父类，那么它必须初始化父类头文件中声明的所有参数。
+open class Person(var name: String="", var age: Int=0)
+
+// 使用默认参数初始化父类构造函数参数
+class Worker(name: String, age: Int, val company: String) : Person()
+// 使用具名参数初始化父类构造函数参数
+class Student : Person(name = "", age = 0)
+// 使用子类构造函数参数初始化父类构造函数参数
+class Teacher(name: String, age: Int, val subject: String) : Person(name, age)
+
+fun main() {
+    val student = Student()
+    student.name = "John" // setName("John")
+    student.age = 20 // setAge(20)
+
+    val teacher = Teacher("Alice", 30, "Math")
+    println(teacher.name)
+    println(teacher.age)
+    println(teacher.subject)
+
+    val worker = Worker("Bob", 40, "Google")
+    println(worker.name)
+    println(worker.age)
+    println(worker.company)
+}
 
 //-----------------------------抽象类--------------------------
 /*
