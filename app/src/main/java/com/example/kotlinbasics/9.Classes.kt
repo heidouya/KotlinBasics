@@ -207,29 +207,58 @@ Kotlin中的类默认是final的，不能被继承，需要使用open关键字�
 // }
 //----------------------------继承注意事项------------------------
 // 如果你的类继承自父类，那么它必须初始化父类头文件中声明的所有参数。
-open class Person(var name: String="", var age: Int=0)
-
-// 使用默认参数初始化父类构造函数参数
-class Worker(name: String, age: Int, val company: String) : Person()
-// 使用具名参数初始化父类构造函数参数
-class Student : Person(name = "", age = 0)
-// 使用子类构造函数参数初始化父类构造函数参数
-class Teacher(name: String, age: Int, val subject: String) : Person(name, age)
+// open class Person(var name: String="", var age: Int=0)
+//
+// // 使用默认参数初始化父类构造函数参数
+// class Worker(name: String, age: Int, val company: String) : Person()
+// // 使用具名参数初始化父类构造函数参数
+// class Student : Person(name = "", age = 0)
+// // 使用子类构造函数参数初始化父类构造函数参数
+// class Teacher(name: String, age: Int, val subject: String) : Person(name, age)
+//
+// fun main() {
+//     val student = Student()
+//     student.name = "John" // setName("John")
+//     student.age = 20 // setAge(20)
+//
+//     val teacher = Teacher("Alice", 30, "Math")
+//     println(teacher.name)
+//     println(teacher.age)
+//     println(teacher.subject)
+//
+//     val worker = Worker("Bob", 40, "Google")
+//     println(worker.name)
+//     println(worker.age)
+//     println(worker.company)
+// }
+//-------------------------重写父类的方法、属性-----------------------
+/*
+1. 重写（override）：子类可以重写父类的方法、属性，但不建议重写父类的属性。
+2. 使用override关键字重写父类方法，使用open关键字声明父类方法可被重写。
+3. 重写方法时，方法名、参数列表必须与父类方法相同，返回类型可以不同。
+4. 重写方法时，可以使用super关键字调用父类方法。
+*/
+open class Animal(var name: String) {
+    // 使用open关键字声明父类属性可被子类重写
+    open var age:Int = 0
+    // 使用open关键字声明父类方法可被子类重写
+    open fun makeSound() {
+        println("Some generic animal sound")
+    }
+}
+class Dog : Animal("Buddy") {
+    // 使用override关键字，重写父类方法，但不建议重写父类的属性
+    override var age:Int = 10
+    // 使用override关键字，重写父类方法
+    override fun makeSound() {
+        println("Bark")
+    }
+}
 
 fun main() {
-    val student = Student()
-    student.name = "John" // setName("John")
-    student.age = 20 // setAge(20)
-
-    val teacher = Teacher("Alice", 30, "Math")
-    println(teacher.name)
-    println(teacher.age)
-    println(teacher.subject)
-
-    val worker = Worker("Bob", 40, "Google")
-    println(worker.name)
-    println(worker.age)
-    println(worker.company)
+    val dog = Dog()
+    dog.makeSound()
+    println(dog.age)
 }
 
 //-----------------------------抽象类--------------------------
