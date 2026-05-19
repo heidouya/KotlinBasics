@@ -369,19 +369,36 @@ Kotlin中的类默认是final的，不能被继承，需要使用open关键字�
 /*
 枚举类可以有属性和方法，要向枚举类添加成员函数，可以使用分号;将其与枚举常量分隔开。枚举类的每个常量之间用逗号分隔。
 */
+// fun main() {
+//     val color = Color.RED
+//     println(color.getRGB()) // 输出: 16711680
+//     println(color.containsRed()) // 输出: true
+// }
+//
+// enum class Color(val rgb: Int) {
+//     RED(0xFF0000),
+//     GREEN(0x00FF00),
+//     BLUE(0x0000FF),
+//     YELLOW(0xFFFF00);
+//
+//     fun getRGB() = rgb
+//
+//     fun containsRed() = (this.rgb and 0xFF0000 != 0)
+// }
+//---------------内联值类----------------------
+/*
+内联值类是一种零开销的类型包装，在编译时会被"内联"为底层类型，不会产生额外的对象分配开销
+
+内联值类只能包含一个属性，该属性必须是主构造函数的参数，并且该参数必须是var或val。
+*/
 fun main() {
-    val color = Color.RED
-    println(color.getRGB()) // 输出: 16711680
-    println(color.containsRed()) // 输出: true
+    val myEmail = Email("example@example.com")
+    sendEmail(myEmail) // Sending email to example@example.com
 }
 
-enum class Color(val rgb: Int) {
-    RED(0xFF0000),
-    GREEN(0x00FF00),
-    BLUE(0x0000FF),
-    YELLOW(0xFFFF00);
+@JvmInline
+value class Email(val address: String)
 
-    fun getRGB() = rgb
-
-    fun containsRed() = (this.rgb and 0xFF0000 != 0)
+fun sendEmail(email: Email) {
+    println("Sending email to ${email.address}")
 }
