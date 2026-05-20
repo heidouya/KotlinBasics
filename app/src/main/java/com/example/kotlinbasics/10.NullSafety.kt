@@ -18,17 +18,29 @@ as 进行类型转换，如果转换失败，则抛出 ClassCastException。
 as? 进行类型转换，如果转换失败，则返回 null。
 * */
 //------------可空类型-------------
+// fun main() {
+//    var neverNull: String = "This can't be null"
+//    // neverNull = null
+//
+//    var nullable: String? = "You can keep a null here"
+//    nullable = null
+//
+//    fun strLength(notNull: String): Int {
+//        return notNull.length
+//    }
+//
+//    println(strLength(neverNull)) // 18
+//    println(strLength(nullable))  // Throws a compiler error
+// }
+//---------------检查空值-------------------
 fun main() {
-   var neverNull: String = "This can't be null"
-   // neverNull = null
-
-   var nullable: String? = "You can keep a null here"
-   nullable = null
-
-   fun strLength(notNull: String): Int {
-       return notNull.length
+   val nullString: String? = null
+   println(describeString(nullString)) // Empty or null string
+}
+fun describeString(maybeString: String?): String {
+   if (maybeString != null && maybeString.length > 0) {
+       return "String of length ${maybeString.length}"
+   } else {
+       return "Empty or null string"
    }
-
-   println(strLength(neverNull)) // 18
-   println(strLength(nullable))  // Throws a compiler error
 }
