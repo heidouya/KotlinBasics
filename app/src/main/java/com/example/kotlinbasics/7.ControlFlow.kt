@@ -154,40 +154,49 @@ do { body } while (condition)
 //    }
 // }
 //-------------for...in/forEach 遍历集合----------------
+// fun main() {
+//     // List集合
+//     val cakes1 = listOf("carrot", "cheese", "chocolate")
+//
+//     for (cake in cakes1) {
+//         println("Yummy, it's a $cake cake!")
+//     }
+//     // Set集合
+//     val cakes2 = setOf("carrot", "cheese", "chocolate")
+//
+//     for (cake in cakes2) {
+//         println("Yummy, it's a $cake cake!")
+//     }
+//
+//     // Map集合
+//     val cakes3 = mapOf("carrot" to "carrot cake", "cheese" to "cheese cake", "chocolate" to "chocolate cake")
+//
+//     for ((key, value) in cakes3) {
+//         println("Yummy, it's a $value! The key is $key")
+//     }
+//
+//     // 使用forEach遍历List集合
+//     cakes1.forEach { cake ->
+//         println("Yummy, it's a $cake cake!")
+//     }
+//     // 使用forEach遍历Set集合
+//     cakes2.forEach { cake ->
+//         println("Yummy, it's a $cake cake!")
+//     }
+//     // 使用forEach遍历Map集合
+//     cakes3.forEach { (key, value) ->
+//         println("Yummy, it's a $value! The key is $key")
+//     }
+// }
+//--------------while-----------
 fun main() {
-    // List集合
-    val cakes1 = listOf("carrot", "cheese", "chocolate")
-
-    for (cake in cakes1) {
-        println("Yummy, it's a $cake cake!")
-    }
-    // Set集合
-    val cakes2 = setOf("carrot", "cheese", "chocolate")
-
-    for (cake in cakes2) {
-        println("Yummy, it's a $cake cake!")
-    }
-
-    // Map集合
-    val cakes3 = mapOf("carrot" to "carrot cake", "cheese" to "cheese cake", "chocolate" to "chocolate cake")
-
-    for ((key, value) in cakes3) {
-        println("Yummy, it's a $value! The key is $key")
-    }
-
-    // 使用forEach遍历List集合
-    cakes1.forEach { cake ->
-        println("Yummy, it's a $cake cake!")
-    }
-    // 使用forEach遍历Set集合
-    cakes2.forEach { cake ->
-        println("Yummy, it's a $cake cake!")
-    }
-    // 使用forEach遍历Map集合
-    cakes3.forEach { (key, value) ->
-        println("Yummy, it's a $value! The key is $key")
-    }
+   var cakesEaten = 0
+   while (cakesEaten < 3) {
+       println("Eat a cake")
+       cakesEaten++
+   }
 }
+
 
 
 
