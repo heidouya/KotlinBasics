@@ -45,9 +45,14 @@ as? 进行类型转换，如果转换失败，则返回 null。
 //    }
 //}
 //-----------使用安全调用----------
+//fun main() {
+//    val nullString: String? = null
+//    println(lengthString(nullString)) // null
+//}
+//
+//fun lengthString(maybeString: String?): Int? = maybeString?.length
+//----------使用Elvis操作符----------
 fun main() {
    val nullString: String? = null
-   println(lengthString(nullString)) // null
+   println(nullString?.length ?: 0) // 0
 }
-
-fun lengthString(maybeString: String?): Int? = maybeString?.length
