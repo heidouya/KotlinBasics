@@ -27,7 +27,6 @@ KotlinBasics 是一个面向初学者的 Kotlin 语法学习开源项目。每�
 | 15 | 对象 | `15.Objects.kt` | `object` 单例、伴生对象、对象表达式 |
 | 16 | Open 与特殊类 | `16.OpenAndSpecialClasses.kt` | `open` 修饰符、`data`/`enum`/`sealed`/`inner` 类 |
 | 17 | 属性 | `17.Properties.kt` | 幕后字段 `field`、自定义 Getter/Setter、委托属性 |
-| 18 | 空安全进阶 | `18.NullSafety.kt` | 深入空安全模式与最佳实践 |
 
 ## 🛠️ 项目技术栈
 
@@ -86,7 +85,6 @@ Kotlin 特色
 ├── 11 扩展函数
 ├── 11 作用域函数
 ├── 12 带接收者的 Lambda
-├── 18 空安全进阶
 ```
 ## 🤝 参与贡献
 
