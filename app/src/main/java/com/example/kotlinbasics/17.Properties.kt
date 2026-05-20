@@ -98,28 +98,52 @@ property：指代被访问或修改的属性（如 person.name 中的 name）
 lazy属性委托通过lazy函数来实现，该函数返回一个代理对象，该对象在第一次访问属性时才进行初始化。lazy属性委托通常用于延迟初始化昂贵的计算或资源。
 */
 
+// fun main() {
+//     fetchData()
+//     fetchData()
+// }
+//
+// class Database {
+//     fun connect() {
+//         println("Connecting to the database...")
+//     }
+//
+//     fun query(sql: String): List<String> {
+//         return listOf("Data1", "Data2", "Data3")
+//     }
+// }
+//
+// val databaseConnection: Database by lazy {
+//     val db = Database()
+//     db.connect()
+//     db
+// }
+//
+// fun fetchData() {
+//     val data = databaseConnection.query("SELECT * FROM data")
+//     println("Data: $data")
+// }
+// -------------------------可观察属性委托------------------------
+/*
+在Kotlin中，可观察属性委托（observable property delegate）是一种标准代理属性，它用于在属性值发生变化时执行某些操作。
+
+可观察属性委托通过observable函数来实现，该函数返回一个代理对象，该对象在属性值发生变化时会执行指定的观察逻辑。可观察属性委托通常用于实现属性值变化的监听和响应。
+*/
+
+import kotlin.properties.Delegates.observable
+
 fun main() {
-    fetchData()
-    fetchData()
+    val thermostat = Thermostat()
+    thermostat.temperature = 22.5
+    thermostat.temperature = 27.0
 }
 
-class Database {
-    fun connect() {
-        println("Connecting to the database...")
+class Thermostat {
+    var temperature: Double by observable(20.0) { _, old, new ->
+        if (new > 25) {
+            println("Warning: Temperature is too high! ($old°C -> $new°C)")
+        } else {
+            println("Temperature updated: $old°C -> $new°C")
+        }
     }
-
-    fun query(sql: String): List<String> {
-        return listOf("Data1", "Data2", "Data3")
-    }
-}
-
-val databaseConnection: Database by lazy {
-    val db = Database()
-    db.connect()
-    db
-}
-
-fun fetchData() {
-    val data = databaseConnection.query("SELECT * FROM data")
-    println("Data: $data")
 }
