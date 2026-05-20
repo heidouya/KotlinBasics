@@ -139,12 +139,18 @@ do { body } while (condition)
 //     }
 // }
 //---------------范围-------------------
+// fun main() {
+//     val a = 1..4 // 1,2,3,4
+//     val b = 1..<4 // 1,2,3
+//     val c = 4 downTo 1 // 4,3,2,1
+//     val d = 1..5 step 2 // 1,3,5
+//
+//     println("a: $a, b: $b, c: $c, d: $d")
+// }
+//---------------for...in 循环-------------------
 fun main() {
-    val a = 1..4 // 1,2,3,4
-    val b = 1..<4 // 1,2,3
-    val c = 4 downTo 1 // 4,3,2,1
-    val d = 1..5 step 2 // 1,3,5
-
-    println("a: $a, b: $b, c: $c, d: $d")
+   for (number in 1..5) {
+       print(number)
+   }
 }
 
