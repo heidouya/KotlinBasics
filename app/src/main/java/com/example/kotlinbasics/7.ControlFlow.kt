@@ -96,13 +96,26 @@ do { body } while (condition)
 //     println(d)
 // }
 //-------------when 用作语句---------------
+// fun main() {
+//     val trafficLightState = "Red"
+//
+//     when (trafficLightState) {
+//         "Green" -> println("Go")
+//         "Yellow" -> println("Slow down")
+//         "Red" -> println("Stop")
+//         else -> println("Malfunction")
+//     }
+// }
+//-------------when 做为表达式--------------
 fun main() {
-    val trafficLightState = "Red"
+   val trafficLightState = "Red"
 
-    when (trafficLightState) {
-        "Green" -> println("Go")
-        "Yellow" -> println("Slow down")
-        "Red" -> println("Stop")
-        else -> println("Malfunction")
-    }
+   val trafficAction = when (trafficLightState) {
+       "Green" -> "Go"
+       "Yellow" -> "Slow down"
+       "Red" -> "Stop"
+       else -> "Malfunction"
+   }
+
+   println(trafficAction) // Stop
 }
