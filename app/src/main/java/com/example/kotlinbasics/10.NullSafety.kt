@@ -33,14 +33,21 @@ as? 进行类型转换，如果转换失败，则返回 null。
 //    println(strLength(nullable))  // Throws a compiler error
 // }
 //---------------检查空值-------------------
+//fun main() {
+//    val nullString: String? = null
+//    println(describeString(nullString)) // Empty or null string
+//}
+//fun describeString(maybeString: String?): String {
+//    if (maybeString != null && maybeString.length > 0) {
+//        return "String of length ${maybeString.length}"
+//    } else {
+//        return "Empty or null string"
+//    }
+//}
+//-----------使用安全调用----------
 fun main() {
    val nullString: String? = null
-   println(describeString(nullString)) // Empty or null string
+   println(lengthString(nullString)) // null
 }
-fun describeString(maybeString: String?): String {
-   if (maybeString != null && maybeString.length > 0) {
-       return "String of length ${maybeString.length}"
-   } else {
-       return "Empty or null string"
-   }
-}
+
+fun lengthString(maybeString: String?): Int? = maybeString?.length
