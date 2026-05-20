@@ -120,12 +120,21 @@ do { body } while (condition)
 //    println(trafficAction) // Stop
 // }
 //------------------when 多条件合并---------------
+// fun main() {
+//     val month = 5
+//     when (month) {
+//         1, 2, 3 -> println("第一季度")
+//         4, 5, 6 -> println("第二季度")
+//         7, 8, 9 -> println("第三季度")
+//         10, 11, 12 -> println("第四季度")
+//     }
+// }
+//-----------------范围匹配---------------
 fun main() {
-    val month = 5
-    when (month) {
-        1, 2, 3 -> println("第一季度")
-        4, 5, 6 -> println("第二季度")
-        7, 8, 9 -> println("第三季度")
-        10, 11, 12 -> println("第四季度")
+    val score = 85
+    when (score) {
+        in 90..100 -> println("优秀")
+        in 60..89  -> println("及格")
+        else -> println("不及格")
     }
 }
