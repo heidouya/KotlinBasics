@@ -69,14 +69,72 @@ as? 进行类型转换，如果转换失败，则返回 null。
 //     }
 // }
 //-------------------as and as?--------------------
+// fun main() {
+//     // 使用 as 进行类型转换，如果转换失败，则抛出 ClassCastException
+//     val any: Any = "This is a String"
+//     val string: String = any as String
+//     println(string.length) // 16
+//
+//     // 使用 as? 进行类型转换，如果转换失败，则返回 null
+//     val any2: Any = "This is a String"
+//     val string2: String? = any2 as? String
+//     println(string2?.length) // 16
+// }
+//-------------------空值与集合----------------------
 fun main() {
-    // 使用 as 进行类型转换，如果转换失败，则抛出 ClassCastException
-    val any: Any = "This is a String"
-    val string: String = any as String
-    println(string.length) // 16
+    // 使用 filterNotNull() 过滤掉 null 值
+    val nullableList: List<String?> = listOf("apple", "banana", null, "cherry")
+    val nonNullList: List<String> = nullableList.filterNotNull()
+    println(nonNullList) // [apple, banana, cherry]
 
-    // 使用 as? 进行类型转换，如果转换失败，则返回 null
-    val any2: Any = "This is a String"
-    val string2: String? = any2 as? String
-    println(string2?.length) // 16
+    //------------------------------------------
+    // 使用 listOfNotNull() 过滤掉 null 值
+    val serverConfig = mapOf(
+        "appConfig.json" to "App Configuration",
+        "dbConfig.json" to "Database Configuration"
+    )
+
+    val requestedFile = "appConfig.json"
+    val configFiles = listOfNotNull(serverConfig[requestedFile])
+
+    println(configFiles)
+    //--------------------------------------------
+    val temperatures = listOf(15, 18, 21, 21, 19, 17, 16)
+
+    // maxOrNull() 找到集合中的最大值，如果集合为空，则返回 null
+    val maxTemperature = temperatures.maxOrNull()
+    println("Highest temperature recorded: ${maxTemperature ?: "No data"}") // Highest temperature recorded: 21
+
+    // minOrNull() 找到集合中的最小值，如果集合为空，则返回 null
+    val minTemperature = temperatures.minOrNull()
+    println("Lowest temperature recorded: ${minTemperature ?: "No data"}") // Lowest temperature recorded: 15
+
+    // singleOrNull() 找到集合中唯一的值，如果集合为空或包含多个值，则返回 null
+    val singleHotDay = temperatures.singleOrNull{ it == 30 }
+    println("Single hot day with 30 degrees: ${singleHotDay ?: "None"}") // Single hot day with 30 degrees: None
+
+    // maxOrNull、minOrNull、singleOrNull 不能用于包含 null 值的集合，否则会返回错误或不正确的结果。例如，对于包含 null 值的集合，maxOrNull 可能会返回 null 作为最大值，这显然是不正确的。因此，如果需要处理可能包含 null 值的集合，应该使用 filterNotNull() 或 listOfNotNull() 过滤掉 null 值，然后再使用 maxOrNull() 或 minOrNull()。
+
+    //------------------------------------
+    data class User(val name: String?, val age: Int?)
+
+    val users = listOf(
+        User(null, 25),
+        User("Alice", null),
+        User("Bob", 30)
+    )
+
+    // firstNotNullOfOrNull() 找到集合中第一个非 null 值，如果集合为空或所有元素都为 null，则返回 null
+    val firstNonNullName = users.firstNotNullOfOrNull { it.name }
+    println(firstNonNullName) // Alice
+
+    //----------------------------------------------
+    val itemPrices = listOf(20, 35, 15, 40, 10)
+    // reduceOrNull() 计算集合中所有元素的累积值，如果集合为空，则返回 null
+    val totalPrice = itemPrices.reduceOrNull { runningTotal, price -> runningTotal + price }
+    println("Total price of items in the cart: ${totalPrice ?: "No items"}") // Total price of items in the cart: 120
+
+    val emptyCart = listOf<Int>()
+    val emptyTotalPrice = emptyCart.reduceOrNull { runningTotal, price -> runningTotal + price }
+    println("Total price of items in the empty cart: ${emptyTotalPrice ?: "No items"}") // Total price of items in the empty cart: No items
 }
