@@ -75,29 +75,43 @@ apply 函数是 Kotlin 中的一种作用域函数，它接受一个 lambda 表�
 /*
 run 函数是 Kotlin 中的一种作用域函数，它接受一个 lambda 表达式作为参数，并将调用该函数的对象作为参数传递给 lambda 表达式。通常用于在代码中执行一些初始化操作，例如设置对象属性、调用对象方法等。run 函数的返回值是 lambda 表达式的返回值，因此可以方便地返回结果。
 */
-val client: Client = Client().apply {
-    token = "asdf"
-}
-
+// val client: Client = Client().apply {
+//     token = "asdf"
+// }
+//
+// fun main() {
+//     val result: String = client.run {
+//         connect()
+//         // connected!
+//         authenticate()
+//         // authenticated!
+//         getData()
+//         // getting data!
+//     }
+//     println("Result: $result")
+// }
+//
+// class Client() {
+//     var token: String? = null
+//     fun connect() = println("connected!")
+//     fun authenticate() = println("authenticated!")
+//     fun getData() : String {
+//         println("getting data!")
+//         return "Mock data"
+//     }
+// }
+//--------------------also--------------------
+/*
+also 函数是 Kotlin 中的一种作用域函数，它接受一个 lambda 表达式作为参数，并将调用该函数的对象作为参数传递给 lambda 表达式。通常用于在代码中执行一些副作用操作，例如打印日志、修改对象状态等。also 函数的返回值是调用该函数的对象，因此可以方便地链式调用。
+*/
 fun main() {
-    val result: String = client.run {
-        connect()
-        // connected!
-        authenticate()
-        // authenticated!
-        getData()
-        // getting data!
-    }
-    println("Result: $result")
+    val medals: List<String> = listOf("Gold", "Silver", "Bronze")
+    val reversedLongUppercaseMedals: List<String> =
+        medals
+            .map { it.uppercase() }
+            .also { println(it) } // [GOLD, SILVER, BRONZE]
+            .filter { it.length > 4 }
+            .also { println(it) } // [SILVER, BRONZE]
+            .reversed()
+    println(reversedLongUppercaseMedals) // [BRONZE, SILVER]
 }
-
-class Client() {
-    var token: String? = null
-    fun connect() = println("connected!")
-    fun authenticate() = println("authenticated!")
-    fun getData() : String {
-        println("getting data!")
-        return "Mock data"
-    }
-}
-
