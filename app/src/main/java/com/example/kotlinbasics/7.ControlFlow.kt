@@ -74,24 +74,35 @@ do { body } while (condition)
 // }
 
 //---------if 带返回值-------------
+// fun main() {
+//     var d: Int
+//     val check = true
+//
+//     // 没有三元运算符 ?:
+//     val e = if (check) 1 else 2
+//
+//     println(e)
+//
+//     d = if (check) {
+//         val a = 1
+//         val b = 2
+//         a + b
+//     } else {
+//         val c = 3
+//         val d = 4
+//         c + d
+//     }
+//
+//     println(d)
+// }
+//-------------when 用作语句---------------
 fun main() {
-    var d: Int
-    val check = true
+    val trafficLightState = "Red"
 
-    // 没有三元运算符 ?:
-    val e = if (check) 1 else 2
-
-    println(e)
-
-    d = if (check) {
-        val a = 1
-        val b = 2
-        a + b
-    } else {
-        val c = 3
-        val d = 4
-        c + d
+    when (trafficLightState) {
+        "Green" -> println("Go")
+        "Yellow" -> println("Slow down")
+        "Red" -> println("Stop")
+        else -> println("Malfunction")
     }
-
-    println(d)
 }
