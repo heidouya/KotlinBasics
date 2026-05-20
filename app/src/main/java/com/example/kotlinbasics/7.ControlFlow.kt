@@ -130,11 +130,21 @@ do { body } while (condition)
 //     }
 // }
 //-----------------范围匹配---------------
+// fun main() {
+//     val score = 85
+//     when (score) {
+//         in 90..100 -> println("优秀")
+//         in 60..89  -> println("及格")
+//         else -> println("不及格")
+//     }
+// }
+//---------------范围-------------------
 fun main() {
-    val score = 85
-    when (score) {
-        in 90..100 -> println("优秀")
-        in 60..89  -> println("及格")
-        else -> println("不及格")
-    }
+    val a = 1..4 // 1,2,3,4
+    val b = 1..<4 // 1,2,3
+    val c = 4 downTo 1 // 4,3,2,1
+    val d = 1..5 step 2 // 1,3,5
+
+    println("a: $a, b: $b, c: $c, d: $d")
 }
+
