@@ -107,15 +107,25 @@ do { body } while (condition)
 //     }
 // }
 //-------------when 做为表达式--------------
+// fun main() {
+//    val trafficLightState = "Red"
+//
+//    val trafficAction = when (trafficLightState) {
+//        "Green" -> "Go"
+//        "Yellow" -> "Slow down"
+//        "Red" -> "Stop"
+//        else -> "Malfunction"
+//    }
+//
+//    println(trafficAction) // Stop
+// }
+//------------------when 多条件合并---------------
 fun main() {
-   val trafficLightState = "Red"
-
-   val trafficAction = when (trafficLightState) {
-       "Green" -> "Go"
-       "Yellow" -> "Slow down"
-       "Red" -> "Stop"
-       else -> "Malfunction"
-   }
-
-   println(trafficAction) // Stop
+    val month = 5
+    when (month) {
+        1, 2, 3 -> println("第一季度")
+        4, 5, 6 -> println("第二季度")
+        7, 8, 9 -> println("第三季度")
+        10, 11, 12 -> println("第四季度")
+    }
 }
