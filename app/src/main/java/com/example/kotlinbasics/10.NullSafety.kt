@@ -57,14 +57,26 @@ as? 进行类型转换，如果转换失败，则返回 null。
 //    println(nullString?.length ?: 0) // 0
 //}
 //-----------------------is and !is----------
+// fun main() {
+//     // 使用 is 判断变量是否为某个类型
+//     val any: Any = "This is a String"
+//     if (any is String) {
+//         println(any.length) // 16
+//     }
+//     // 使用 !is 判断变量是否不是某个类型
+//     if (any !is String) {
+//         println("any is not a String")
+//     }
+// }
+//-------------------as and as?--------------------
 fun main() {
-    // 使用 is 判断变量是否为某个类型
+    // 使用 as 进行类型转换，如果转换失败，则抛出 ClassCastException
     val any: Any = "This is a String"
-    if (any is String) {
-        println(any.length) // 16
-    }
-    // 使用 !is 判断变量是否不是某个类型
-    if (any !is String) {
-        println("any is not a String")
-    }
+    val string: String = any as String
+    println(string.length) // 16
+
+    // 使用 as? 进行类型转换，如果转换失败，则返回 null
+    val any2: Any = "This is a String"
+    val string2: String? = any2 as? String
+    println(string2?.length) // 16
 }
