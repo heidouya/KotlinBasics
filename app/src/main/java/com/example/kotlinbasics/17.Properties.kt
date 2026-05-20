@@ -66,28 +66,60 @@ by 关键字表示将属性的访问委托给后面的对象。
 thisRef：指代包含委托属性的对象（如 person.name 中的 person）
 property：指代被访问或修改的属性（如 person.name 中的 name）
 */
-class CachedStringDelegate {
-    var cachedValue: String? = null
+// class CachedStringDelegate {
+//     var cachedValue: String? = null
+//
+//     operator fun getValue(thisRef: User, property: Any?): String {
+//         if (cachedValue == null) {
+//             cachedValue = "${thisRef.firstName} ${thisRef.lastName}"
+//             println("Computed and cached: $cachedValue")
+//         } else {
+//             println("Accessed from cache: $cachedValue")
+//         }
+//         return cachedValue ?: "Unknown"
+//     }
+// }
+//
+// class User(val firstName: String, val lastName: String) {
+//     val displayName: String by CachedStringDelegate()
+// }
+//
+// fun main() {
+//     val user = User("John", "Doe")
+//
+//     println(user.displayName) // John Doe
+//
+//     println(user.displayName) // John Doe
+// }
+//------------------------------lazy属性委托--------------------
+/*
+在Kotlin中，lazy属性委托（lazy property delegate）是一种标准代理属性，它用于延迟初始化属性，即只有在第一次访问属性时才进行初始化。
 
-    operator fun getValue(thisRef: User, property: Any?): String {
-        if (cachedValue == null) {
-            cachedValue = "${thisRef.firstName} ${thisRef.lastName}"
-            println("Computed and cached: $cachedValue")
-        } else {
-            println("Accessed from cache: $cachedValue")
-        }
-        return cachedValue ?: "Unknown"
+lazy属性委托通过lazy函数来实现，该函数返回一个代理对象，该对象在第一次访问属性时才进行初始化。lazy属性委托通常用于延迟初始化昂贵的计算或资源。
+*/
+
+fun main() {
+    fetchData()
+    fetchData()
+}
+
+class Database {
+    fun connect() {
+        println("Connecting to the database...")
+    }
+
+    fun query(sql: String): List<String> {
+        return listOf("Data1", "Data2", "Data3")
     }
 }
 
-class User(val firstName: String, val lastName: String) {
-    val displayName: String by CachedStringDelegate()
+val databaseConnection: Database by lazy {
+    val db = Database()
+    db.connect()
+    db
 }
 
-fun main() {
-    val user = User("John", "Doe")
-
-    println(user.displayName) // John Doe
-
-    println(user.displayName) // John Doe
+fun fetchData() {
+    val data = databaseConnection.query("SELECT * FROM data")
+    println("Data: $data")
 }
