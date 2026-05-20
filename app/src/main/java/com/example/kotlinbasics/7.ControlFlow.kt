@@ -138,15 +138,43 @@ do { body } while (condition)
 //         else -> println("不及格")
 //     }
 // }
-//---------------范围-------------------
-// fun main() {
-//     val a = 1..4 // 1,2,3,4
-//     val b = 1..<4 // 1,2,3
-//     val c = 4 downTo 1 // 4,3,2,1
-//     val d = 1..5 step 2 // 1,3,5
-//
-//     println("a: $a, b: $b, c: $c, d: $d")
-// }
+//---------------范围表达式-------------------
+/*
+范围表达式用于表示一个连续的值区间。常用的范围表达式有：
+1. .. 表示闭区间，包含两个端点
+2. ..< 表示半开区间，包含左端点，不包含右端点
+3. downTo 表示降序区间，包含两个端点
+4. step 表示步长，用于指定区间内元素之间的间隔
+5. until 表示半开区间，包含左端点，不包含右端点
+例如：
+1. 1..5 表示闭区间[1,5]也就是1，2，3，4，5，
+2. 1..<5 表示半开区间[1,5)也就是1，2，3，4，
+3. 1 until 5 表示半开区间[1,5)也就是1，2，3，4，
+4. 4 downTo 1 表示闭区间[4,1]也就是4，3，2，1，
+5. 1..5 step 2 表示闭区间[1,5]也就是1，3，5。
+
+范围不仅支持数字，也支持字符，例如：
+1. 'a'..'z' 表示闭区间[a,z]也就是a，b，c，...，z，
+2. 'a'..<z' 表示半开区间[a,z)也就是a，b，c，...，y，
+3. 'z' downTo 'a' 表示闭区间[z,a]也就是z，y，x，...，a，
+4. 'a'..'z' step 2 表示闭区间[a,z]也就是a，c，e，...，z。
+
+检查是否在范围内 in，如：
+```kotlin
+val x = 3
+println(x in 1..5)
+```
+*/
+fun main() {
+    println((1..5))
+    println(1..<5)
+    println(4 downTo 1)
+    println(1..5 step 2)
+    println('a'..'z')
+    println('a'..'z' step 2)
+    println('z' downTo 'a')
+    println('a' in 'a'..'z')
+}
 //---------------for...in 循环-------------------
 // fun main() {
 //    for (number in 1..5) {
@@ -198,14 +226,14 @@ do { body } while (condition)
 // }
 
 //-----------do...while---------
-fun main() {
-   var cakesBaked = 0
-
-   do {
-       println("Bake a cake")
-       cakesBaked++
-   } while (cakesBaked < 3)
-}
+// fun main() {
+//    var cakesBaked = 0
+//
+//    do {
+//        println("Bake a cake")
+//        cakesBaked++
+//    } while (cakesBaked < 3)
+// }
 
 
 
