@@ -49,27 +49,49 @@ do { body } while (condition)
 范围可以用于for循环中，表示一个值的集合。例如，1..5表示1到5的范围，1..<5表示1到5的范围（不包括5），4 downTo 1表示4到1的范围，1..5 step 2表示1到5的范围，步长为2。
 */
 //------------if-----------
+// fun main() {
+//     val a = 1
+//     // 单分支
+//     if (a == 1) {
+//         print("a is one")
+//     }
+//
+//     // 双分支
+//     if (a == 1) {
+//         print("a is one")
+//     } else {
+//         print("a is not one")
+//     }
+//
+//     // 多分支
+//     if (a == 1) {
+//         print("a is one")
+//     } else if (a == 2) {
+//         print("a is two")
+//     } else {
+//         print("a is something else")
+//     }
+// }
+
+//---------if 带返回值-------------
 fun main() {
-    val a = 1
-    // 单分支
-    if (a == 1) {
-        print("a is one")
+    var d: Int
+    val check = true
+
+    // 没有三元运算符 ?:
+    val e = if (check) 1 else 2
+
+    println(e)
+
+    d = if (check) {
+        val a = 1
+        val b = 2
+        a + b
+    } else {
+        val c = 3
+        val d = 4
+        c + d
     }
 
-    // 双分支
-    if (a == 1) {
-        print("a is one")
-    } else {
-        print("a is not one")
-    }
-
-    // 多分支
-    if (a == 1) {
-        print("a is one")
-    } else if (a == 2) {
-        print("a is two")
-    } else {
-        print("a is something else")
-    }
+    println(d)
 }
-
