@@ -189,14 +189,23 @@ do { body } while (condition)
 //     }
 // }
 //--------------while-----------
-fun main() {
-   var cakesEaten = 0
-   while (cakesEaten < 3) {
-       println("Eat a cake")
-       cakesEaten++
-   }
-}
+// fun main() {
+//    var cakesEaten = 0
+//    while (cakesEaten < 3) {
+//        println("Eat a cake")
+//        cakesEaten++
+//    }
+// }
 
+//-----------do...while---------
+fun main() {
+   var cakesBaked = 0
+
+   do {
+       println("Bake a cake")
+       cakesBaked++
+   } while (cakesBaked < 3)
+}
 
 
 
