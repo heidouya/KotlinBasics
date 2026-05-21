@@ -193,60 +193,100 @@ for (变量 in 集合/区间) {
 //     }
 // }
 //-------------for...in/forEach 遍历集合----------------
-fun main() {
-    // List集合
-    val cakes1 = listOf("carrot", "cheese", "chocolate")
-
-    for (cake in cakes1) {
-        println("Yummy, it's a $cake cake!")
-    }
-    // Set集合
-    val cakes2 = setOf("carrot", "cheese", "chocolate")
-
-    for (cake in cakes2) {
-        println("Yummy, it's a $cake cake!")
-    }
-
-    // Map集合
-    val cakes3 = mapOf("carrot" to "carrot cake", "cheese" to "cheese cake", "chocolate" to "chocolate cake")
-
-    for ((key, value) in cakes3) {
-        println("Yummy, it's a $value! The key is $key")
-    }
+// fun main() {
+//     // List集合
+//     val cakes1 = listOf("carrot", "cheese", "chocolate")
+//
+//     for (cake in cakes1) {
+//         println("Yummy, it's a $cake cake!")
+//     }
+//     // Set集合
+//     val cakes2 = setOf("carrot", "cheese", "chocolate")
+//
+//     for (cake in cakes2) {
+//         println("Yummy, it's a $cake cake!")
+//     }
+//
+//     // Map集合
+//     val cakes3 = mapOf("carrot" to "carrot cake", "cheese" to "cheese cake", "chocolate" to "chocolate cake")
+//
+//     for ((key, value) in cakes3) {
+//         println("Yummy, it's a $value! The key is $key")
+//     }
+// /*
+// forEach 是 Kotlin 集合的一个扩展函数，作用和 for...in 类似，但写法更简洁，属于函数式风格。
+//
+// forEach 的语法：
+// 集合.forEach { 元素 ->
+//     // 处理每个元素
+// }
+// */
+//     // 使用forEach遍历List集合
+//     println("-------------forEach-----------------")
+//     cakes1.forEach { cake ->
+//         println("Yummy, it's a $cake cake!")
+//     }
+//     // 使用forEach遍历Set集合
+//     cakes2.forEach { cake ->
+//         println("Yummy, it's a $cake cake!")
+//     }
+//     // 使用forEach遍历Map集合
+//     cakes3.forEach { (key, value) ->
+//         println("Yummy, it's a $value! The key is $key")
+//     }
+//
+//     println("-------------forEach简写-----------------")
+//     // it 默认代表当前元素
+//     cakes1.forEach {
+//         println("Yummy, it's a $it cake!")
+//     }
+//     // forEach简写
+//     cakes2.forEach {
+//         println("Yummy, it's a $it cake!")
+//     }
+//     // forEach简写
+//     cakes3.forEach {
+//         println("Yummy, it's a ${it.value}! The key is ${it.key}")
+//     }
+// }
+// ----------------break、continue----------------
 /*
-forEach 是 Kotlin 集合的一个扩展函数，作用和 for...in 类似，但写法更简洁，属于函数式风格。
+break —— 终止循环：遇到 break，立即退出整个循环，后续元素不再处理。
+continue —— 跳过当前循环：遇到 continue，跳过当前循环的剩余部分，直接开始下一次循环。
 
-forEach 的语法：
-集合.forEach { 元素 ->
-    // 处理每个元素
-}
+for...in 循环体内支持break、continue语句，用于控制循环的执行。forEach不支持break、continue语句。
 */
-    // 使用forEach遍历List集合
-    println("-------------forEach-----------------")
-    cakes1.forEach { cake ->
-        println("Yummy, it's a $cake cake!")
-    }
-    // 使用forEach遍历Set集合
-    cakes2.forEach { cake ->
-        println("Yummy, it's a $cake cake!")
-    }
-    // 使用forEach遍历Map集合
-    cakes3.forEach { (key, value) ->
-        println("Yummy, it's a $value! The key is $key")
+fun main() {
+    for (number in 1..5) {
+        if (number == 3) {
+            break
+        }
+        println(number)
     }
 
-    println("-------------forEach简写-----------------")
-    // it 默认代表当前元素
-    cakes1.forEach {
-        println("Yummy, it's a $it cake!")
+    for (number in 1..5) {
+        if (number == 3) {
+            continue
+        }
+        println(number)
     }
-    // forEach简写
-    cakes2.forEach {
-        println("Yummy, it's a $it cake!")
+
+    // 嵌套循环中的 break，默认只终止最近的内层循环，外层循环继续执行
+    for (i in 1..3) {
+        println("外层: $i")
+        for (j in 1..3) {
+            if (j == 2) break        // 只退出内层循环
+            println("  内层: $j")
+        }
     }
-    // forEach简写
-    cakes3.forEach {
-        println("Yummy, it's a ${it.value}! The key is ${it.key}")
+    println("----------")
+    // 如果想同时终止外层循环 → 用标签
+    outer@ for (i in 1..3) {
+        println("外层: $i")
+        for (j in 1..3) {
+            if (j == 2) break@outer  // 退出外层循环
+            println("  内层: $j")
+        }
     }
 }
 //--------------while-----------
