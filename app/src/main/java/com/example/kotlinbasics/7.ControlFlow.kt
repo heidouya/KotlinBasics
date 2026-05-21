@@ -165,57 +165,90 @@ val x = 3
 println(x in 1..5)
 ```
 */
-fun main() {
-    println((1..5))
-    println(1..<5)
-    println(4 downTo 1)
-    println(1..5 step 2)
-    println('a'..'z')
-    println('a'..'z' step 2)
-    println('z' downTo 'a')
-    println('a' in 'a'..'z')
-}
-//---------------for...in 循环-------------------
 // fun main() {
-//    for (number in 1..5) {
-//        print(number)
-//    }
+//     println((1..5))
+//     println(1..<5)
+//     println(4 downTo 1)
+//     println(1..5 step 2)
+//     println('a'..'z')
+//     println('a'..'z' step 2)
+//     println('z' downTo 'a')
+//     println('a' in 'a'..'z')
+// }
+//---------------for...in 循环-------------------
+/*
+Kotlin 没有传统的三段式 for 循环(for(var i=0; i<5; i++))，而是使用 for...in 循环来遍历集合或区间。
+
+for...in 循环的作用：依次取出一个集合/区间中的每个元素，逐一处理。
+
+for...in 循环的语法：
+for (变量 in 集合/区间) {
+    // 循环体
+    // 每次循环，变量 = 集合中的下一个元素
+}
+*/
+// fun main() {
+//     for (number in 1..5) {
+//         println(number)
+//     }
 // }
 //-------------for...in/forEach 遍历集合----------------
-// fun main() {
-//     // List集合
-//     val cakes1 = listOf("carrot", "cheese", "chocolate")
-//
-//     for (cake in cakes1) {
-//         println("Yummy, it's a $cake cake!")
-//     }
-//     // Set集合
-//     val cakes2 = setOf("carrot", "cheese", "chocolate")
-//
-//     for (cake in cakes2) {
-//         println("Yummy, it's a $cake cake!")
-//     }
-//
-//     // Map集合
-//     val cakes3 = mapOf("carrot" to "carrot cake", "cheese" to "cheese cake", "chocolate" to "chocolate cake")
-//
-//     for ((key, value) in cakes3) {
-//         println("Yummy, it's a $value! The key is $key")
-//     }
-//
-//     // 使用forEach遍历List集合
-//     cakes1.forEach { cake ->
-//         println("Yummy, it's a $cake cake!")
-//     }
-//     // 使用forEach遍历Set集合
-//     cakes2.forEach { cake ->
-//         println("Yummy, it's a $cake cake!")
-//     }
-//     // 使用forEach遍历Map集合
-//     cakes3.forEach { (key, value) ->
-//         println("Yummy, it's a $value! The key is $key")
-//     }
-// }
+fun main() {
+    // List集合
+    val cakes1 = listOf("carrot", "cheese", "chocolate")
+
+    for (cake in cakes1) {
+        println("Yummy, it's a $cake cake!")
+    }
+    // Set集合
+    val cakes2 = setOf("carrot", "cheese", "chocolate")
+
+    for (cake in cakes2) {
+        println("Yummy, it's a $cake cake!")
+    }
+
+    // Map集合
+    val cakes3 = mapOf("carrot" to "carrot cake", "cheese" to "cheese cake", "chocolate" to "chocolate cake")
+
+    for ((key, value) in cakes3) {
+        println("Yummy, it's a $value! The key is $key")
+    }
+/*
+forEach 是 Kotlin 集合的一个扩展函数，作用和 for...in 类似，但写法更简洁，属于函数式风格。
+
+forEach 的语法：
+集合.forEach { 元素 ->
+    // 处理每个元素
+}
+*/
+    // 使用forEach遍历List集合
+    println("-------------forEach-----------------")
+    cakes1.forEach { cake ->
+        println("Yummy, it's a $cake cake!")
+    }
+    // 使用forEach遍历Set集合
+    cakes2.forEach { cake ->
+        println("Yummy, it's a $cake cake!")
+    }
+    // 使用forEach遍历Map集合
+    cakes3.forEach { (key, value) ->
+        println("Yummy, it's a $value! The key is $key")
+    }
+
+    println("-------------forEach简写-----------------")
+    // it 默认代表当前元素
+    cakes1.forEach {
+        println("Yummy, it's a $it cake!")
+    }
+    // forEach简写
+    cakes2.forEach {
+        println("Yummy, it's a $it cake!")
+    }
+    // forEach简写
+    cakes3.forEach {
+        println("Yummy, it's a ${it.value}! The key is ${it.key}")
+    }
+}
 //--------------while-----------
 // fun main() {
 //    var cakesEaten = 0
